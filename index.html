@@ -247,6 +247,9 @@
         .toolbar-row.align-right { justify-content: flex-end; }
         .toolbar-row .btn, .toolbar-row .form-select { margin-bottom: 0; }
         .toolbar-group { display: flex; gap: 10px; align-items: center; }
+        
+        /* Fix for input inside toolbar */
+        .toolbar-row .form-input { margin-bottom: 0; padding: 10px 14px; }
     </style>
 </head>
 <body>
@@ -543,7 +546,16 @@
                             <div class="toolbar-group">
                                 <select id="filter-absen-kelas" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadRekapFiltered('Absensi', 'rekap-absen-body')"><option value="">Semua Kelas</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select>
                                 <select id="filter-absen-bulan" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadRekapFiltered('Absensi', 'rekap-absen-body')"><option value="">Semua Bulan</option><option value="1">Januari</option><option value="2">Februari</option><option value="3">Maret</option><option value="4">April</option><option value="5">Mei</option><option value="6">Juni</option><option value="7">Juli</option><option value="8">Agustus</option><option value="9">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Desember</option></select>
-                                <button class="btn btn-secondary" onclick="loadRekap('Absensi', 'rekap-absen-body')"><i class="ph ph-arrows-clockwise"></i></button>
+                                <input type="text" id="filter-absen-nama" class="form-input" placeholder="Cari Nama..." style="width: 150px;">
+                                <select id="filter-absen-status" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadRekapFiltered('Absensi', 'rekap-absen-body')">
+                                    <option value="">Semua Status</option>
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Sakit">Sakit</option>
+                                    <option value="Izin">Izin</option>
+                                    <option value="Alpa">Alpa</option>
+                                    <option value="Bolos">Bolos</option>
+                                </select>
+                                <button class="btn btn-secondary" onclick="loadRekapFiltered('Absensi', 'rekap-absen-body')"><i class="ph ph-arrows-clockwise"></i></button>
                             </div>
                             <button class="btn btn-secondary" onclick="printContent('rekap-absen-body')"><i class="ph ph-printer"></i> Print</button>
                         </div>
@@ -586,7 +598,7 @@
                             <h3><i class="ph ph-pencil-simple-line"></i> Metadata</h3>
                             <div class="nilai-meta-grid">
                                 <div class="form-group"><label class="form-label">Kelas</label><select id="n-kelas" class="form-select" onchange="loadSiswa('n-kelas', 'list-nilai')" required><option value="">Pilih</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select></div>
-                                <div class="form-group"><label class="form-label">Jenis</label><select id="n-jenis" class="form-select"><option value="Tugas">Tugas</option><option value="UH">UH</option><option value="UTS">UTS</option><option value="UAS">UAS</option></select></div>
+                                <div class="form-group"><label class="form-label">Jenis</label><select id="n-jenis" class="form-select"><option value="Tugas">Tugas</option><option value="UH">UH</option><option value="UTS">UTS</option><option value="UAS">UAS</option><option value="Praktek">Praktek</option></select></div>
                                 <div class="form-group"><label class="form-label">Materi</label><input type="text" id="n-materi" class="form-input" required></div>
                                 <div class="form-group"><label class="form-label">Tanggal</label><input type="date" id="n-tanggal" class="form-input" required></div>
                             </div>
@@ -611,7 +623,15 @@
                         <div class="toolbar-row">
                             <div class="toolbar-group">
                                 <select id="filter-nilai-admin-kelas" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadNilaiAdmin()"><option value="">Semua Kelas</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select>
-                                <select id="filter-nilai-admin-jenis" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadNilaiAdmin()"><option value="">Semua Jenis</option><option value="Tugas">Tugas</option><option value="UH">UH</option><option value="UTS">UTS</option><option value="UAS">UAS</option></select>
+                                <select id="filter-nilai-admin-jenis" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadNilaiAdmin()">
+                                    <option value="">Semua Jenis</option>
+                                    <option value="Tugas">Tugas</option>
+                                    <option value="UH">UH</option>
+                                    <option value="UTS">UTS</option>
+                                    <option value="UAS">UAS</option>
+                                    <option value="Praktek">Praktek</option>
+                                </select>
+                                <input type="text" id="filter-nilai-admin-nama" class="form-input" placeholder="Cari Nama..." style="width: 150px;">
                                 <button class="btn btn-secondary" onclick="loadNilaiAdmin()"><i class="ph ph-arrows-clockwise"></i></button>
                             </div>
                             <button class="btn btn-secondary" onclick="printContent('nilai-admin-body')"><i class="ph ph-printer"></i> Print</button>
@@ -721,7 +741,7 @@
 
     <script>
         // URL WEB APP
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzqfVCjZe53FsFzivZeKraOfBBHyhbtP8oo-2xA-rEJT-d11Ano0LW64Y6adWmvEHgaHQ/exec'; 
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzGbPsi9j-ekbDDkGA6aqlxBbU-wo85oYeb0YQbnm_s0YsT0tQ6p9_uQTRCNc9jIe83bw/exec'; 
         const PASSWORD = "OmGuru25"; 
         const ADMIN_PASSWORD = "AdminGuru25"; 
 
@@ -814,15 +834,38 @@
 
         // Print Utility
         function printContent(divId) {
-            const content = document.getElementById(divId);
-            if (!content) return;
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write(`<html><head><title>Print Data</title><style>body { background-color: #ffffff; color: #000000; font-family: 'DM Sans', sans-serif; padding: 20px; -webkit-print-color-adjust: exact; } table { width: 100%; border-collapse: collapse; margin-top: 10px; } th, td { border: 1px solid #000000; padding: 8px; text-align: left; } th { background-color: #f2f2f2 !important; color: #000000 !important; font-weight: bold; } .toolbar-row, .no-print { display: none !important; } h3 { color: #000000; }</style></head><body>${content.innerHTML}</body></html>`);
-            printWindow.document.close(); printWindow.focus();
-            setTimeout(function() { printWindow.print(); printWindow.close(); }, 500);
+            try {
+                const content = document.getElementById(divId);
+                if (!content) { showToast("Konten tidak ditemukan.", "error"); return; }
+                if (!content.innerHTML || content.innerHTML.includes("spinner")) { showToast("Data belum dimuat.", "error"); return; }
+                const printWindow = window.open('', '_blank');
+                if (!printWindow) { showToast("Pop-up diblokir!", "error"); return; }
+                printWindow.document.write(`<html><head><title>Print Data</title><style>body{font-family:'DM Sans',sans-serif;padding:20px;background:#fff;color:#000;}table{width:100%;border-collapse:collapse;}th,td{border:1px solid #000;padding:8px;text-align:left;}th{background-color:#f2f2f2;font-weight:bold;}.toolbar-row,.no-print{display:none;}</style></head><body>${content.innerHTML}</body></html>`);
+                printWindow.document.close(); printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            } catch (e) { console.error(e); showToast("Error printing.", "error"); }
         }
 
-        function checkNIS() { const nisInput = document.getElementById('input-nis-siswa').value; if(!nisInput) { showToast("Masukkan NIS", "error"); return; } document.getElementById('nilai-rekap-body').innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin" style="font-size:1.5rem; color:var(--primary)"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Data_Nilai&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { const studentData = (response.data || []).filter(row => row[0].toString() === nisInput); if(studentData.length > 0) { document.getElementById('nilai-login-card').classList.add('hidden'); document.getElementById('nilai-rekap-body').classList.remove('hidden'); renderTableFromData(studentData, 'nilai-rekap-body', true); } else { showToast("Data tidak ditemukan", "error"); } }).catch(err => showToast("Error", "error")); }
+        // UPDATED checkNIS
+        function checkNIS() { 
+            const nisInput = document.getElementById('input-nis-siswa').value; 
+            if(!nisInput) { showToast("Masukkan NIS", "error"); return; } 
+            document.getElementById('nilai-rekap-body').innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin" style="font-size:1.5rem; color:var(--primary)"></i></p>'; 
+            const url = WEB_APP_URL + '?action=getData&sheetName=Data_Nilai&nocache=' + new Date().getTime(); 
+            fetch(url).then(res => res.json()).then(response => { 
+                const studentData = (response.data || []).filter(row => String(row[0]).trim() === String(nisInput).trim()); 
+                if(studentData.length > 0) { 
+                    document.getElementById('nilai-login-card').classList.add('hidden'); 
+                    document.getElementById('nilai-rekap-body').classList.remove('hidden'); 
+                    // Define specific columns to show for student view
+                    const colsToShow = ['NIS', 'Nama', 'Kelas', 'Jenis', 'Materi', 'Nilai'];
+                    renderTableFromData(studentData, 'nilai-rekap-body', true, [], colsToShow); 
+                } else { 
+                    showToast("Data tidak ditemukan", "error"); 
+                } 
+            }).catch(err => showToast("Error", "error")); 
+        }
+
         function loadSiswa(selectId, targetId) { const kelas = document.getElementById(selectId).value; const div = document.getElementById(targetId); if(!kelas) return; div.innerHTML = '<p style="text-align:center; padding: 20px;"><i class="ph ph-spinner ph-spin"></i></p>'; if (studentsCache[kelas] && studentsCache[kelas].length > 0) { renderSiswaList(div, targetId, studentsCache[kelas]); return; } const url = WEB_APP_URL + '?action=getData&sheetName=Data_Siswa&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { const flatData = response.data || []; studentsCache = {}; if (flatData.length > 0) { const headerRow = flatData[0]; let nameIdx = headerRow.findIndex(cell => String(cell).toUpperCase().trim() === "NAMA"); let classIdx = headerRow.findIndex(cell => String(cell).toUpperCase().trim() === "KELAS"); if(nameIdx === -1) nameIdx = 2; if(classIdx === -1) classIdx = 3; for(let i = 1; i < flatData.length; i++) { const row = flatData[i]; if(!row || row.length === 0) continue; const nama = row[nameIdx]; let klsRaw = row[classIdx]; if (nama && klsRaw) { let klsNormalized = String(klsRaw).replace(/\./g, '').replace(/\s/g, '').replace(/-/g, ''); if(!studentsCache[klsNormalized]) studentsCache[klsNormalized] = []; studentsCache[klsNormalized].push({id: row[0] || i, NAMA: nama}); } } } if(studentsCache[kelas] && studentsCache[kelas].length > 0) { renderSiswaList(div, targetId, studentsCache[kelas]); } else { div.innerHTML = `<p style="text-align:center; color:var(--danger); padding: 20px;">Data siswa kelas <b>${kelas}</b> tidak ditemukan.</p>`; } }).catch(err => { console.error(err); div.innerHTML = '<p style="text-align:center; color:var(--danger);">Koneksi gagal.</p>'; }); }
         function renderSiswaList(div, targetId, data) { div.innerHTML = ''; if(targetId === 'list-absen') { data.forEach((s) => { div.innerHTML += `<div class="student-item"><div>${s.NAMA}</div><div class="status-group" data-name="${s.NAMA}"><button type="button" class="status-btn active-hadir" onclick="setAbsen(this, 'Hadir')">H</button><button type="button" class="status-btn" onclick="setAbsen(this, 'Sakit')">S</button><button type="button" class="status-btn" onclick="setAbsen(this, 'Izin')">I</button><button type="button" class="status-btn" onclick="setAbsen(this, 'Alpa')">A</button><button type="button" class="status-btn" onclick="setAbsen(this, 'Bolos')">B</button></div></div>`; }); } else if (targetId === 'list-nilai') { data.forEach((s) => { div.innerHTML += `<div class="student-item"><div>${s.NAMA}</div><input type="number" class="form-input score-input" style="width:80px; margin-bottom:0; text-align:center; padding:8px;" data-name="${s.NAMA}" placeholder="0"></div>`; }); } div.innerHTML += `<div class="student-count-footer">Total: ${data.length} Siswa</div>`; }
         function setAbsen(btn, status) { const parent = btn.parentElement; parent.querySelectorAll('.status-btn').forEach(b => { b.className = 'status-btn'; }); let cls = 'active-hadir'; if(status === 'Sakit') cls = 'active-sakit'; if(status === 'Izin') cls = 'active-izin'; if(status === 'Alpa') cls = 'active-alpa'; if(status === 'Bolos') cls = 'active-bolos'; btn.classList.add(cls); parent.dataset.status = status; }
@@ -920,15 +963,21 @@
         function loadScheduleData() { const div = document.getElementById('jadwal-content'); const filterTahun = document.getElementById('tahun-filter').value; const filterSem = document.getElementById('semester-filter').value; div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Jadwal&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { let dataRows = (response.data && response.data[0] && response.data[0][0] === 'Timestamp') ? response.data.slice(1) : response.data || []; const filteredRows = dataRows.filter(row => row[1] === filterTahun && row[2] === filterSem); let html = `<div class="table-container"><table><thead><tr><th>Hari</th><th>Jam</th><th>Waktu</th><th>Kelas</th><th>Mapel</th></tr></thead><tbody>`; filteredRows.forEach(r => { html += `<tr><td>${r[3]||'-'}</td><td>${r[4]||'-'}</td><td>${r[5]||'-'}</td><td>${r[6]||'-'}</td><td>${r[7]||'-'}</td></tr>`; }); html += `</tbody></table></div>`; div.innerHTML = html; }).catch(err => { div.innerHTML = '<p style="text-align:center">Gagal.</p>'; }); }
         
         // Rekap Logic
-        function loadRekap(type, targetId) { const div = document.getElementById(targetId); div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Data_' + type + '&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { if(response.data && response.data.length > 0) { renderTableFromData(response.data, targetId); } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Kosong.</p>'; } }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); }
+        function loadRekap(type, targetId) { const div = document.getElementById(targetId); div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Data_' + type + '&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { if(response.data && response.data.length > 0) { 
+            let colsToHide = [];
+            if (type === 'Bimbingan') colsToHide = ['Jam'];
+            renderTableFromData(response.data, targetId, false, colsToHide); 
+        } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Kosong.</p>'; } }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); }
 
-        function loadRekapFiltered(type, targetId, arg1, arg2, filterId) { 
+        function loadRekapFiltered(type, targetId) { 
             const div = document.getElementById(targetId); 
             div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; 
             
             let kelasVal = "";
             let bulanVal = "";
             let jenisVal = "";
+            let namaVal = "";
+            let statusVal = "";
 
             if(type === 'Jurnal') {
                 kelasVal = document.getElementById('filter-jurnal-kelas').value;
@@ -936,8 +985,10 @@
             } else if(type === 'Absensi') {
                 kelasVal = document.getElementById('filter-absen-kelas').value;
                 bulanVal = document.getElementById('filter-absen-bulan').value;
-            } else if(type === 'Bimbingan' && filterId) {
-                jenisVal = document.getElementById(filterId).value;
+                namaVal = document.getElementById('filter-absen-nama') ? document.getElementById('filter-absen-nama').value.toLowerCase() : "";
+                statusVal = document.getElementById('filter-absen-status') ? document.getElementById('filter-absen-status').value : "";
+            } else if(type === 'Bimbingan') {
+                jenisVal = document.getElementById('filter-gw-jenis').value;
             }
 
             let url = WEB_APP_URL + '?action=getData&sheetName=Data_' + type + '&nocache=' + new Date().getTime();
@@ -950,96 +1001,202 @@
                     let headers = data[0];
                     let rows = data.slice(1);
                     
+                    // Dynamic Header Index Finding
+                    let kelasIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "KELAS");
+                    let bulanIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "TANGGAL");
+                    let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
+                    let namaIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NAMA" || String(h).toUpperCase().trim() === "NAMA SISWA");
+                    let statusIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "STATUS");
+
                     let filteredRows = rows.filter(row => {
                         let match = true;
-                        if (kelasVal) { match = match && (row[2] == kelasVal); }
-                        if (bulanVal) {
+                        
+                        // Filter Kelas
+                        if (kelasVal && kelasIdx !== -1) {
+                            match = match && (String(row[kelasIdx]).trim() === String(kelasVal).trim());
+                        }
+                        
+                        // Filter Bulan (based on Tanggal column)
+                        if (bulanVal && bulanIdx !== -1) {
                             try {
-                                let date = new Date(row[1]);
+                                let date = new Date(row[bulanIdx]);
                                 if (!isNaN(date)) {
                                     let rowMonth = date.getMonth() + 1;
                                     match = match && (rowMonth == parseInt(bulanVal));
                                 }
                             } catch(e) { match = false; }
                         }
-                        if (jenisVal && type === 'Bimbingan') { match = match && (row[5] == jenisVal); }
+
+                        // Filter Jenis
+                        if (jenisVal && jenisIdx !== -1) {
+                             match = match && (String(row[jenisIdx]).trim() === String(jenisVal).trim());
+                        }
+
+                        // Filter Nama
+                        if (namaVal && namaIdx !== -1) {
+                            match = match && (String(row[namaIdx]).toLowerCase().includes(namaVal));
+                        }
+
+                        // Filter Status
+                        if (statusVal && statusIdx !== -1) {
+                            match = match && (String(row[statusIdx]).trim() === statusVal);
+                        }
+
                         return match;
                     });
-                    renderTableFromData([headers, ...filteredRows], targetId);
+                    
+                    // Hide 'Jam' column for Bimbingan
+                    let colsToHide = [];
+                    if (type === 'Bimbingan') colsToHide = ['Jam'];
+                    renderTableFromData([headers, ...filteredRows], targetId, false, colsToHide);
                 } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Kosong.</p>'; }
             }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); 
         }
 
-        function loadNilaiAdmin() { const div = document.getElementById('nilai-admin-body'); const kelas = document.getElementById('filter-nilai-admin-kelas').value; const jenis = document.getElementById('filter-nilai-admin-jenis').value; div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; let url = WEB_APP_URL + '?action=getData&sheetName=Data_Nilai&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { if(response.data && response.data.length > 0) { let data = response.data; let headers = data[0]; let rows = data.slice(1); let filteredRows = rows.filter(row => { let match = true; if(kelas) match = match && (row[3] === kelas); if(jenis) match = match && (row[4] === jenis); return match; }); renderTableFromData([headers, ...filteredRows], 'nilai-admin-body'); } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Tidak ada data nilai.</p>'; } }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); }
+        function loadNilaiAdmin() { 
+            const div = document.getElementById('nilai-admin-body'); 
+            const kelas = document.getElementById('filter-nilai-admin-kelas').value; 
+            const jenis = document.getElementById('filter-nilai-admin-jenis').value; 
+            const nama = document.getElementById('filter-nilai-admin-nama') ? document.getElementById('filter-nilai-admin-nama').value.toLowerCase() : "";
+            
+            div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; 
+            
+            let url = WEB_APP_URL + '?action=getData&sheetName=Data_Nilai&nocache=' + new Date().getTime(); 
+            
+            fetch(url).then(res => res.json()).then(response => { 
+                if(response.data && response.data.length > 0) { 
+                    let data = response.data; 
+                    let headers = data[0]; 
+                    let rows = data.slice(1); 
+                    
+                    // FIX: Dynamic Index Finding
+                    let kelasIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "KELAS");
+                    let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
+                    let namaIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NAMA");
+                    // If Nama is "NAMA SISWA", try that too
+                    if(namaIdx === -1) namaIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NAMA SISWA");
 
-        // FIX: Rewritten Render Table Logic for Alignment
-        function renderTableFromData(values, targetId, isStudentView = false) {
+                    let filteredRows = rows.filter(row => { 
+                        let match = true; 
+                        
+                        // Filter Kelas using found index
+                        if(kelas && kelasIdx !== -1) {
+                            match = match && (String(row[kelasIdx]).trim() === String(kelas).trim());
+                        }
+                        
+                        // Filter Jenis using found index
+                        if(jenis && jenisIdx !== -1) {
+                            match = match && (String(row[jenisIdx]).trim() === String(jenis).trim());
+                        }
+                        
+                        // Filter Nama using found index
+                        if(nama && namaIdx !== -1) {
+                            match = match && (String(row[namaIdx]).toLowerCase().includes(nama));
+                        }
+                        
+                        return match; 
+                    }); 
+                    renderTableFromData([headers, ...filteredRows], 'nilai-admin-body'); 
+                } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Tidak ada data nilai.</p>'; } 
+            }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); 
+        }
+
+        // UPDATED Render Table Logic for Alignment & Custom Hide/Show
+        function renderTableFromData(values, targetId, isStudentView = false, columnsToHide = [], columnsToShow = null) {
             const div = document.getElementById(targetId);
             if(!values || values.length === 0) { div.innerHTML = '<p>Kosong.</p>'; return; }
             
             let headers = values[0];
             let dataRows = values.slice(1);
+            
+            // Determine indices to use
+            let indicesToUse = [];
+            let cleanHeaders = [];
 
-            // 1. Identify column indices
-            let timestampIdx = headers.findIndex(h => String(h).toUpperCase().includes('TIMESTAMP'));
-            // Fallback if header missing but data looks like date
-            if(timestampIdx === -1 && dataRows.length > 0 && dataRows[0][0] && typeof dataRows[0][0] === 'string' && dataRows[0][0].match(/^\d{4}-\d{2}-\d{2}T/)) {
-                timestampIdx = 0;
+            if (columnsToShow) {
+                // WHITELIST MODE (Student View)
+                columnsToShow.forEach(colName => {
+                    let idx = headers.findIndex(h => String(h).toUpperCase().trim() === String(colName).toUpperCase().trim());
+                    if (idx !== -1) {
+                        indicesToUse.push(idx);
+                        cleanHeaders.push(headers[idx]);
+                    }
+                });
+            } else {
+                // BLACKLIST MODE (Admin View)
+                let timestampIdx = headers.findIndex(h => String(h).toUpperCase().includes('TIMESTAMP'));
+                if(timestampIdx === -1 && dataRows.length > 0 && dataRows[0][0] && typeof dataRows[0][0] === 'string' && dataRows[0][0].match(/^\d{4}-\d{2}-\d{2}T/)) {
+                    timestampIdx = 0;
+                }
+
+                let hideIndices = columnsToHide.map(colName => 
+                    headers.findIndex(h => String(h).toUpperCase().trim() === String(colName).toUpperCase().trim())
+                ).filter(idx => idx !== -1);
+
+                let tanggalIdx = headers.findIndex(h => String(h).toUpperCase().trim() === 'TANGGAL');
+                
+                headers.forEach((h, i) => {
+                    if(i !== timestampIdx && !hideIndices.includes(i)) {
+                        indicesToUse.push(i);
+                        cleanHeaders.push(h);
+                    }
+                });
             }
 
-            let tanggalIdx = headers.findIndex(h => String(h).toUpperCase().trim() === 'TANGGAL');
-            
-            // 2. Build clean arrays (removing Timestamp column completely)
-            let cleanHeaders = [];
-            let cleanRows = [];
+            // Build HTML
+            let tableHtml = `<div class="table-container"><table><thead><tr>`;
+            cleanHeaders.forEach(h => { tableHtml += `<th>${h}</th>`; });
+            tableHtml += `</tr></thead><tbody>`;
 
-            // Map indices to keep (filter out timestamp)
-            let indicesToKeep = [];
-            headers.forEach((h, i) => {
-                if(i !== timestampIdx) {
-                    indicesToKeep.push(i);
-                    cleanHeaders.push(h);
-                }
-            });
-
-            // Process data rows
             dataRows.forEach(row => {
-                let newRow = [];
-                indicesToKeep.forEach(i => {
+                tableHtml += `<tr>`;
+                indicesToUse.forEach(i => {
                     let cell = row[i];
-                    
-                    // Handle Date Formatting for "Tanggal" column
-                    if (i === tanggalIdx && typeof cell === 'string' && cell.includes('T')) {
-                         try { 
+                    // Date formatting
+                    if (String(headers[i]).toUpperCase().trim() === 'TANGGAL' && typeof cell === 'string' && cell.includes('T')) {
+                        try { 
                             let date = new Date(cell); 
                             if (!isNaN(date)) cell = date.toLocaleDateString('id-ID'); 
                         } catch(e) {}
                     }
-                    
-                    newRow.push(cell);
+                    tableHtml += `<td>${cell}</td>`;
                 });
-                cleanRows.push(newRow);
+                tableHtml += `</tr>`;
             });
-
-            // 3. Render HTML
-            let html = `<div class="table-container"><table><thead><tr>`;
-            cleanHeaders.forEach(h => {
-                html += `<th>${h}</th>`;
-            });
-            html += `</tr></thead><tbody>`;
-
-            cleanRows.forEach(row => {
-                html += `<tr>`;
-                row.forEach(cell => {
-                    html += `<td>${cell}</td>`;
-                });
-                html += `</tr>`;
-            });
-
-            html += `</tbody></table></div>`;
+            tableHtml += `</tbody></table></div>`;
             
-            if(isStudentView) { html += `<div style="margin-top:20px; text-align:center;"><button class="btn btn-secondary" onclick="document.getElementById('nilai-login-card').classList.remove('hidden'); document.getElementById('nilai-rekap-body').classList.add('hidden');">Kembali</button></div>`; }
-            div.innerHTML = html;
+            // Final Assembly
+            if(isStudentView) {
+                // Extract Student Name for Header
+                let studentName = "Siswa";
+                let nameIdx = headers.findIndex(h => String(h).toUpperCase().includes("NAMA"));
+                if (nameIdx !== -1 && dataRows.length > 0) {
+                    studentName = dataRows[0][nameIdx];
+                }
+
+                // Extract unique "Jenis" for Sub-header
+                let jenisList = [];
+                let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
+                if (jenisIdx !== -1) {
+                    dataRows.forEach(r => {
+                        if (r[jenisIdx] && !jenisList.includes(r[jenisIdx])) jenisList.push(r[jenisIdx]);
+                    });
+                }
+                let jenisText = jenisList.length > 0 ? jenisList.join(', ') : 'Campuran';
+
+                let headerHtml = `
+                <div style="margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; color: var(--primary); margin-bottom: 8px; font-size: 1.4rem;">Rekapitulasi Nilai Siswa</h3>
+                    <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 4px;"><strong>${studentName}</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Jenis Penilaian: <span style="color: var(--accent); font-weight:600;">${jenisText}</span></p>
+                </div>`;
+
+                let backBtn = `<div style="margin-top:20px; text-align:center;"><button class="btn btn-secondary" onclick="document.getElementById('nilai-login-card').classList.remove('hidden'); document.getElementById('nilai-rekap-body').classList.add('hidden');">Kembali</button></div>`;
+                
+                div.innerHTML = headerHtml + tableHtml + backBtn;
+            } else {
+                div.innerHTML = tableHtml;
+            }
         }
     </script>
 </body>
