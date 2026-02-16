@@ -741,7 +741,7 @@
 
     <script>
         // URL WEB APP
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzGbPsi9j-ekbDDkGA6aqlxBbU-wo85oYeb0YQbnm_s0YsT0tQ6p9_uQTRCNc9jIe83bw/exec'; 
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbykOk3pMFZOOU1oWaJp08Q2CLJ5x_djN72H1B4hmsQuE6-Qf8-XPSUZjjPDRCnXlQtm2A/exec'; 
         const PASSWORD = "OmGuru25"; 
         const ADMIN_PASSWORD = "AdminGuru25"; 
 
@@ -852,14 +852,32 @@
             if(!nisInput) { showToast("Masukkan NIS", "error"); return; } 
             document.getElementById('nilai-rekap-body').innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin" style="font-size:1.5rem; color:var(--primary)"></i></p>'; 
             const url = WEB_APP_URL + '?action=getData&sheetName=Data_Nilai&nocache=' + new Date().getTime(); 
+            
             fetch(url).then(res => res.json()).then(response => { 
-                const studentData = (response.data || []).filter(row => String(row[0]).trim() === String(nisInput).trim()); 
-                if(studentData.length > 0) { 
+                const allData = response.data || [];
+                // Check if data exists
+                if (allData.length < 2) { 
+                    showToast("Data nilai kosong.", "error"); 
+                    return; 
+                }
+
+                const headers = allData[0]; 
+                const rows = allData.slice(1); 
+                
+                // Find NIS column index dynamically
+                let nisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NIS");
+                if(nisIdx === -1) nisIdx = 0; // Default fallback
+                
+                const studentRows = rows.filter(row => String(row[nisIdx]).trim() === String(nisInput).trim()); 
+                
+                if(studentRows.length > 0) { 
                     document.getElementById('nilai-login-card').classList.add('hidden'); 
                     document.getElementById('nilai-rekap-body').classList.remove('hidden'); 
-                    // Define specific columns to show for student view
-                    const colsToShow = ['NIS', 'Nama', 'Kelas', 'Jenis', 'Materi', 'Nilai'];
-                    renderTableFromData(studentData, 'nilai-rekap-body', true, [], colsToShow); 
+                    
+                    // Pass headers back along with filtered rows
+                    // Define specific columns to show in order: NIS, Kelas, Jenis, Materi, Nama Siswa, Nilai
+                    const colsToShow = ['NIS', 'Kelas', 'Jenis', 'Materi', 'Nama Siswa', 'Nilai']; 
+                    renderTableFromData([headers, ...studentRows], 'nilai-rekap-body', true, [], colsToShow); 
                 } else { 
                     showToast("Data tidak ditemukan", "error"); 
                 } 
@@ -1116,10 +1134,15 @@
             if (columnsToShow) {
                 // WHITELIST MODE (Student View)
                 columnsToShow.forEach(colName => {
+                    // Try exact match first, then partial match (e.g. "Nama" matches "NAMA SISWA")
                     let idx = headers.findIndex(h => String(h).toUpperCase().trim() === String(colName).toUpperCase().trim());
+                    if (idx === -1) {
+                         idx = headers.findIndex(h => String(h).toUpperCase().includes(String(colName).toUpperCase()));
+                    }
+                    
                     if (idx !== -1) {
                         indicesToUse.push(idx);
-                        cleanHeaders.push(headers[idx]);
+                        cleanHeaders.push(colName); // Use the requested header name
                     }
                 });
             } else {
