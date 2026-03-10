@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Guru SMP - Om Guru</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
+        /* --- CSS VARIABLES & RESET --- */
         :root {
             --primary: #e85d4c;
             --primary-soft: rgba(232, 93, 76, 0.15);
@@ -46,6 +49,7 @@
             min-height: 100vh;
         }
 
+        /* --- BACKGROUND EFFECTS --- */
         .bg-system {
             position: fixed;
             inset: 0;
@@ -83,12 +87,14 @@
         @keyframes orbFloat2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-50px, -30px) scale(1.05); } }
         @keyframes orbFloat3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-30px, 40px); } }
 
+        /* --- LAYOUT UTILITIES --- */
         #app { display: flex; flex-direction: column; min-height: 100vh; position: relative; z-index: 1; }
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
+        /* --- HEADER --- */
         .header-wrapper { position: relative; padding: 32px 24px 0; max-width: 1440px; margin: 0 auto; width: 100%; }
         .header-card { position: relative; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 32px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; overflow: hidden; }
         .header-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); }
@@ -116,6 +122,7 @@
         .stat-item .value { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .stat-item .label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
+        /* --- NAVIGATION --- */
         nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 15, 20, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; margin-top: 24px; }
         .nav-content { max-width: 1440px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
         .nav-content::-webkit-scrollbar { display: none; }
@@ -127,6 +134,7 @@
         .nav-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 20px var(--primary-glow); }
         .nav-btn.active i { color: white; }
 
+        /* --- MAIN CONTENT --- */
         main { flex: 1; max-width: 1440px; width: 100%; margin: 0 auto; padding: 32px 24px; }
         .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700; margin-bottom: 28px; color: var(--text-main); display: flex; align-items: center; gap: 14px; }
         .section-title i { color: var(--primary); font-size: 1.6rem; }
@@ -134,6 +142,7 @@
         .content-section.active { display: block; animation: fadeSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* --- CARDS & UI ELEMENTS --- */
         .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; position: relative; overflow: hidden; transition: all 0.3s ease; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border-light), transparent); }
         .card:hover { border-color: var(--border-light); transform: translateY(-2px); }
@@ -308,8 +317,6 @@
             <!-- Profil Section -->
             <section id="profil" class="content-section active">
                 <div class="section-title"><i class="ph ph-user-circle-dashed"></i> Teacher Profile</div>
-                
-                <!-- Profile Header -->
                 <div class="card profile-header-card">
                     <img src="https://picsum.photos/seed/omguru/200/200.jpg" alt="Edithia Opasanta Salatin" class="profile-avatar">
                     <div class="profile-header-info">
@@ -322,64 +329,31 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- About Me -->
                 <div class="card">
                     <h3><i class="ph ph-chat-circle-text"></i> About Me</h3>
                     <p style="color: var(--text-muted); line-height: 1.8;">I am Edithia Opasanta Salatin, S.Pd.I., an educator born and raised in Metro City. With my dedication to teaching English, I have a vision to build quality education in my homeland through communicative and character-based language teaching. As a graduate of STAIN Jurai Siwo Metro with a degree in S.Pd.I., I combine linguistic expertise with tarbiyah (Islamic education) values in every learning process.</p>
                 </div>
-
-                <!-- Educational Background -->
-                 <div class="card">
+                <div class="card">
                     <h3><i class="ph ph-graduation-cap"></i> Educational Background</h3>
                     <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">As a local son who completed all levels of education in leading schools in Metro City, I have a deep understanding of the character of students in this environment.</p>
                     <div class="edu-timeline">
-                        <div class="edu-item">
-                            <h4>S1 - Higher Education</h4>
-                            <div class="title">STAIN Jurai Siwo Metro (Now IAIN Metro)</div>
-                            <div class="subtitle">Bachelor of English Education, Department of Tarbiyah</div>
-                        </div>
-                        <div class="edu-item">
-                            <h4>SMA - Senior High School</h4>
-                            <div class="title">SMA Negeri 3 Metro</div>
-                            <div class="subtitle">Metro City, Lampung</div>
-                        </div>
-                        <div class="edu-item">
-                            <h4>SMP - Junior High School</h4>
-                            <div class="title">SMP Negeri 2 Metro</div>
-                            <div class="subtitle">Metro City, Lampung</div>
-                        </div>
-                        <div class="edu-item">
-                            <h4>SD - Elementary School</h4>
-                            <div class="title">SD Pertiwi Teladan Metro</div>
-                            <div class="subtitle">Metro City, Lampung</div>
-                        </div>
+                        <div class="edu-item"><h4>S1 - Higher Education</h4><div class="title">STAIN Jurai Siwo Metro (Now IAIN Metro)</div><div class="subtitle">Bachelor of English Education, Department of Tarbiyah</div></div>
+                        <div class="edu-item"><h4>SMA - Senior High School</h4><div class="title">SMA Negeri 3 Metro</div><div class="subtitle">Metro City, Lampung</div></div>
+                        <div class="edu-item"><h4>SMP - Junior High School</h4><div class="title">SMP Negeri 2 Metro</div><div class="subtitle">Metro City, Lampung</div></div>
+                        <div class="edu-item"><h4>SD - Elementary School</h4><div class="title">SD Pertiwi Teladan Metro</div><div class="subtitle">Metro City, Lampung</div></div>
                     </div>
                 </div>
-
-                <!-- Experience & Competencies -->
                 <div class="card">
                     <h3><i class="ph ph-briefcase"></i> Experience & Competencies</h3>
                     <p style="margin-bottom: 20px; color: var(--text-muted);">For more than 15 years, I have consistently taught English, managed classes with an interactive approach, and adapted to various changes in the national education curriculum.</p>
                     <div class="experience-grid">
-                        <div class="exp-card">
-                            <h4><i class="ph ph-chalkboard-teacher"></i> Pedagogical Expertise</h4>
-                            <p>Integrating modern language teaching methods that include Listening, Speaking, Reading, and Writing with the approach of akhlakul karimah (noble character) values.</p>
-                        </div>
-                        <div class="exp-card">
-                            <h4><i class="ph ph-users"></i> Local Character Understanding</h4>
-                            <p>My educational background, which is entirely in Metro, makes it easier for me to build effective connections and communication with students and parents.</p>
-                        </div>
+                        <div class="exp-card"><h4><i class="ph ph-chalkboard-teacher"></i> Pedagogical Expertise</h4><p>Integrating modern language teaching methods that include Listening, Speaking, Reading, and Writing with the approach of akhlakul karimah (noble character) values.</p></div>
+                        <div class="exp-card"><h4><i class="ph ph-users"></i> Local Character Understanding</h4><p>My educational background, which is entirely in Metro, makes it easier for me to build effective connections and communication with students and parents.</p></div>
                     </div>
                 </div>
-
-                <!-- Teaching Philosophy -->
                 <div class="card">
                     <h3><i class="ph ph-lightbulb"></i> Teaching Philosophy</h3>
-                    <div class="quote-card">
-                        <p>"Educating is a calling of the heart to build civilization. As an educator in the City of Education (Metro), I am committed to guiding my students to become individuals who are proficient in global languages without forgetting their cultural roots and local identity."</p>
-                        <span class="author">- Edithia Opasanta Salatin, S.Pd.I.</span>
-                    </div>
+                    <div class="quote-card"><p>"Educating is a calling of the heart to build civilization. As an educator in the City of Education (Metro), I am committed to guiding my students to become individuals who are proficient in global languages without forgetting their cultural roots and local identity."</p><span class="author">- Edithia Opasanta Salatin, S.Pd.I.</span></div>
                 </div>
             </section>
 
@@ -388,10 +362,7 @@
                 <div class="section-title"><i class="ph ph-calendar-check"></i> Jadwal Mengajar</div>
                 <div class="card no-print"><button class="btn btn-primary" onclick="openJadwalForm()"><i class="ph ph-lock-key"></i> Buka Form Tambah Jadwal</button></div>
                 <div id="jadwal-input-wrapper" class="card hidden">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
-                        <h3 style="margin:0;"><i class="ph ph-plus-circle"></i> Tambah Jadwal Baru</h3>
-                        <button class="btn btn-secondary" onclick="closeJadwalForm()" style="padding:8px 16px; font-size:0.85rem;">Tutup Form</button>
-                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;"><h3 style="margin:0;"><i class="ph ph-plus-circle"></i> Tambah Jadwal Baru</h3><button class="btn btn-secondary" onclick="closeJadwalForm()" style="padding:8px 16px; font-size:0.85rem;">Tutup Form</button></div>
                     <form id="form-jadwal">
                         <div class="jadwal-grid">
                             <div class="form-group"><label class="form-label">Tahun Pelajaran</label><select id="jadwal-tahun" class="form-select" required></select></div>
@@ -422,22 +393,11 @@
             <section id="silabus" class="content-section">
                 <div class="section-title"><i class="ph ph-book-bookmark"></i> Silabus</div>
                 <div id="password-overlay-silabus" class="modal-overlay">
-                    <div class="modal-card">
-                        <i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h3>Akses Form Silabus</h3>
-                        <input type="password" id="pw-silabus" class="form-input password-input" placeholder="****">
-                        <div class="modal-actions">
-                            <button class="btn btn-secondary" onclick="closeModal('password-overlay-silabus')">Batal</button>
-                            <button class="btn btn-primary" onclick="checkPw('pw-silabus', 'password-overlay-silabus')">Buka</button>
-                        </div>
-                    </div>
+                    <div class="modal-card"><i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i><h3>Akses Form Silabus</h3><input type="password" id="pw-silabus" class="form-input password-input" placeholder="****"><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('password-overlay-silabus')">Batal</button><button class="btn btn-primary" onclick="checkPw('pw-silabus', 'password-overlay-silabus')">Buka</button></div></div>
                 </div>
                 <div class="card no-print"><button class="btn btn-primary" onclick="openSilabusForm()"><i class="ph ph-lock-key"></i> Buka Form Tambah Silabus</button></div>
                 <div id="silabus-form-wrapper" class="card hidden">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
-                        <h3 style="margin:0;"><i class="ph ph-plus-circle"></i> Tambah Silabus Baru</h3>
-                        <button class="btn btn-secondary" onclick="closeSilabusForm()" style="padding:8px 16px; font-size:0.85rem;">Tutup Form</button>
-                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;"><h3 style="margin:0;"><i class="ph ph-plus-circle"></i> Tambah Silabus Baru</h3><button class="btn btn-secondary" onclick="closeSilabusForm()" style="padding:8px 16px; font-size:0.85rem;">Tutup Form</button></div>
                     <form id="form-silabus">
                         <div class="jadwal-grid">
                             <div class="form-group"><label class="form-label">Tahun Pelajaran</label><select id="silabus-tahun" class="form-select" required></select></div>
@@ -463,15 +423,7 @@
             <section id="bahan-ajar" class="content-section">
                 <div class="section-title"><i class="ph ph-desktop"></i> Bahan Ajar</div>
                 <div id="password-overlay-bahan" class="modal-overlay">
-                    <div class="modal-card">
-                        <i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h3>Akses Form Bahan Ajar</h3>
-                        <input type="password" id="pw-bahan" class="form-input password-input" placeholder="****">
-                        <div class="modal-actions">
-                            <button class="btn btn-secondary" onclick="closeModal('password-overlay-bahan')">Batal</button>
-                            <button class="btn btn-primary" onclick="checkPw('pw-bahan', 'password-overlay-bahan')">Buka</button>
-                        </div>
-                    </div>
+                    <div class="modal-card"><i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i><h3>Akses Form Bahan Ajar</h3><input type="password" id="pw-bahan" class="form-input password-input" placeholder="****"><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('password-overlay-bahan')">Batal</button><button class="btn btn-primary" onclick="checkPw('pw-bahan', 'password-overlay-bahan')">Buka</button></div></div>
                 </div>
                 <div class="card no-print"><button class="btn btn-primary" onclick="openBahanForm()"><i class="ph ph-lock-key"></i> Buka Form Tambah Bahan</button></div>
                 <div id="bahan-form-wrapper" class="card hidden">
@@ -484,7 +436,7 @@
                 </div>
                 <div class="card">
                     <h3><i class="ph ph-books"></i> Daftar Materi</h3>
-                    <div id="list-bahan-container" class="bahan-grid"></div>
+                    <div id="list-bahan-container" class="bahan-grid"><p style="text-align: center; color: var(--text-muted);">Memuat data...</p></div>
                 </div>
             </section>
 
@@ -497,15 +449,7 @@
                     <button class="nav-btn" onclick="switchTab(this, 'absen-rekap')">Rekap Absen</button>
                 </div>
                 <div id="password-overlay-jurnal" class="modal-overlay">
-                    <div class="modal-card">
-                        <i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h3>Akses Input Jurnal</h3>
-                        <input type="password" id="pw-jurnal" class="form-input password-input" placeholder="****">
-                        <div class="modal-actions">
-                            <button class="btn btn-secondary" onclick="closeModal('password-overlay-jurnal')">Batal</button>
-                            <button class="btn btn-primary" onclick="checkPw('pw-jurnal', 'password-overlay-jurnal')">Buka</button>
-                        </div>
-                    </div>
+                    <div class="modal-card"><i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i><h3>Akses Input Jurnal</h3><input type="password" id="pw-jurnal" class="form-input password-input" placeholder="****"><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('password-overlay-jurnal')">Batal</button><button class="btn btn-primary" onclick="checkPw('pw-jurnal', 'password-overlay-jurnal')">Buka</button></div></div>
                 </div>
                 <div id="jurnal-input" class="tab-pane hidden">
                     <form id="form-jurnal">
@@ -533,7 +477,7 @@
                             <div class="toolbar-group">
                                 <select id="filter-jurnal-kelas" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadRekapFiltered('Jurnal', 'rekap-jurnal-body')"><option value="">Semua Kelas</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select>
                                 <select id="filter-jurnal-bulan" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadRekapFiltered('Jurnal', 'rekap-jurnal-body')"><option value="">Semua Bulan</option><option value="1">Januari</option><option value="2">Februari</option><option value="3">Maret</option><option value="4">April</option><option value="5">Mei</option><option value="6">Juni</option><option value="7">Juli</option><option value="8">Agustus</option><option value="9">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Desember</option></select>
-                                <button class="btn btn-secondary" onclick="loadRekap('Jurnal', 'rekap-jurnal-body')"><i class="ph ph-arrows-clockwise"></i></button>
+                                <button class="btn btn-secondary" onclick="loadRekapFiltered('Jurnal', 'rekap-jurnal-body')"><i class="ph ph-arrows-clockwise"></i></button>
                             </div>
                             <button class="btn btn-secondary" onclick="printContent('rekap-jurnal-body')"><i class="ph ph-printer"></i> Print</button>
                         </div>
@@ -549,11 +493,7 @@
                                 <input type="text" id="filter-absen-nama" class="form-input" placeholder="Cari Nama..." style="width: 150px;">
                                 <select id="filter-absen-status" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadRekapFiltered('Absensi', 'rekap-absen-body')">
                                     <option value="">Semua Status</option>
-                                    <option value="Hadir">Hadir</option>
-                                    <option value="Sakit">Sakit</option>
-                                    <option value="Izin">Izin</option>
-                                    <option value="Alpa">Alpa</option>
-                                    <option value="Bolos">Bolos</option>
+                                    <option value="Hadir">Hadir</option><option value="Sakit">Sakit</option><option value="Izin">Izin</option><option value="Alpa">Alpa</option><option value="Bolos">Bolos</option>
                                 </select>
                                 <button class="btn btn-secondary" onclick="loadRekapFiltered('Absensi', 'rekap-absen-body')"><i class="ph ph-arrows-clockwise"></i></button>
                             </div>
@@ -567,10 +507,7 @@
             <!-- Asesmen Section -->
             <section id="asesmen" class="content-section">
                 <div class="section-title"><i class="ph ph-clipboard-text"></i> Asesmen Pembelajaran</div>
-                <div class="card">
-                    <h3><i class="ph ph-desktop"></i> Akses CBT</h3>
-                    <div style="text-align: center; margin-top: 20px;"><a href="https://edithiasalatin53-del.github.io/Online-Test-System/" target="_blank" class="btn btn-primary"><i class="ph ph-export"></i> Buka Online Test System</a></div>
-                </div>
+                <div class="card"><h3><i class="ph ph-desktop"></i> Akses CBT</h3><div style="text-align: center; margin-top: 20px;"><a href="https://edithiasalatin53-del.github.io/Online-Test-System/" target="_blank" class="btn btn-primary"><i class="ph ph-export"></i> Buka Online Test System</a></div></div>
             </section>
 
             <!-- Buku Nilai Section -->
@@ -582,40 +519,17 @@
                     <button class="nav-btn" onclick="askPasswordForNilaiAdmin(this, 'nilai-admin')">Rekap Nilai (Admin)</button>
                 </div>
                 <div id="password-overlay-nilai" class="modal-overlay">
-                    <div class="modal-card">
-                        <i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h3>Akses Input Nilai</h3>
-                        <input type="password" id="pw-nilai" class="form-input password-input" placeholder="****">
-                        <div class="modal-actions">
-                            <button class="btn btn-secondary" onclick="closeModal('password-overlay-nilai')">Batal</button>
-                            <button class="btn btn-primary" onclick="checkPw('pw-nilai', 'password-overlay-nilai')">Buka</button>
-                        </div>
-                    </div>
+                    <div class="modal-card"><i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i><h3>Akses Input Nilai</h3><input type="password" id="pw-nilai" class="form-input password-input" placeholder="****"><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('password-overlay-nilai')">Batal</button><button class="btn btn-primary" onclick="checkPw('pw-nilai', 'password-overlay-nilai')">Buka</button></div></div>
                 </div>
                 <div id="nilai-input" class="tab-pane hidden">
                     <form id="form-nilai">
-                        <div class="card">
-                            <h3><i class="ph ph-pencil-simple-line"></i> Metadata</h3>
-                            <div class="nilai-meta-grid">
-                                <div class="form-group"><label class="form-label">Kelas</label><select id="n-kelas" class="form-select" onchange="loadSiswa('n-kelas', 'list-nilai')" required><option value="">Pilih</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select></div>
-                                <div class="form-group"><label class="form-label">Jenis</label><select id="n-jenis" class="form-select"><option value="Tugas">Tugas</option><option value="UH">UH</option><option value="UTS">UTS</option><option value="UAS">UAS</option><option value="Praktek">Praktek</option></select></div>
-                                <div class="form-group"><label class="form-label">Materi</label><input type="text" id="n-materi" class="form-input" required></div>
-                                <div class="form-group"><label class="form-label">Tanggal</label><input type="date" id="n-tanggal" class="form-input" required></div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3><i class="ph ph-list-numbers"></i> Input Nilai</h3>
-                            <div id="list-nilai" class="student-list-container"><p style="text-align: center; padding: 20px; color: var(--text-muted);">Pilih kelas.</p></div>
-                        </div>
+                        <div class="card"><h3><i class="ph ph-pencil-simple-line"></i> Metadata</h3><div class="nilai-meta-grid"><div class="form-group"><label class="form-label">Kelas</label><select id="n-kelas" class="form-select" onchange="loadSiswa('n-kelas', 'list-nilai')" required><option value="">Pilih</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select></div><div class="form-group"><label class="form-label">Jenis</label><select id="n-jenis" class="form-select"><option value="Tugas">Tugas</option><option value="UH">UH</option><option value="UTS">UTS</option><option value="UAS">UAS</option><option value="Praktek">Praktek</option></select></div><div class="form-group"><label class="form-label">Materi</label><input type="text" id="n-materi" class="form-input" required></div><div class="form-group"><label class="form-label">Tanggal</label><input type="date" id="n-tanggal" class="form-input" required></div></div></div>
+                        <div class="card"><h3><i class="ph ph-list-numbers"></i> Input Nilai</h3><div id="list-nilai" class="student-list-container"><p style="text-align: center; padding: 20px; color: var(--text-muted);">Pilih kelas.</p></div></div>
                         <div style="text-align: right;"><button type="submit" id="btn-submit-nilai" class="btn btn-primary"><i class="ph ph-floppy-disk"></i> Simpan</button></div>
                     </form>
                 </div>
                 <div id="nilai-rekap" class="tab-pane">
-                    <div class="card" id="nilai-login-card">
-                        <h3><i class="ph ph-identification-card"></i> Cek Nilai</h3>
-                        <div class="form-group"><label class="form-label">NIS</label><input type="number" id="input-nis-siswa" class="form-input" placeholder="NIS"></div>
-                        <button class="btn btn-primary" onclick="checkNIS()"><i class="ph ph-magnifying-glass"></i> Cari</button>
-                    </div>
+                    <div class="card" id="nilai-login-card"><h3><i class="ph ph-identification-card"></i> Cek Nilai</h3><div class="form-group"><label class="form-label">NIS</label><input type="number" id="input-nis-siswa" class="form-input" placeholder="NIS"></div><button class="btn btn-primary" onclick="checkNIS()"><i class="ph ph-magnifying-glass"></i> Cari</button></div>
                     <div id="nilai-rekap-body" class="card hidden"></div>
                 </div>
                 <div id="nilai-admin" class="tab-pane hidden">
@@ -623,14 +537,7 @@
                         <div class="toolbar-row">
                             <div class="toolbar-group">
                                 <select id="filter-nilai-admin-kelas" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadNilaiAdmin()"><option value="">Semua Kelas</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select>
-                                <select id="filter-nilai-admin-jenis" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadNilaiAdmin()">
-                                    <option value="">Semua Jenis</option>
-                                    <option value="Tugas">Tugas</option>
-                                    <option value="UH">UH</option>
-                                    <option value="UTS">UTS</option>
-                                    <option value="UAS">UAS</option>
-                                    <option value="Praktek">Praktek</option>
-                                </select>
+                                <select id="filter-nilai-admin-jenis" class="form-select" style="width: auto; padding: 10px 14px;" onchange="loadNilaiAdmin()"><option value="">Semua Jenis</option><option value="Tugas">Tugas</option><option value="UH">UH</option><option value="UTS">UTS</option><option value="UAS">UAS</option><option value="Praktek">Praktek</option></select>
                                 <input type="text" id="filter-nilai-admin-nama" class="form-input" placeholder="Cari Nama..." style="width: 150px;">
                                 <button class="btn btn-secondary" onclick="loadNilaiAdmin()"><i class="ph ph-arrows-clockwise"></i></button>
                             </div>
@@ -650,43 +557,17 @@
                     <button class="nav-btn" onclick="askPasswordForGWTabs(this, 'gw-data')">Data Bimbingan</button>
                 </div>
                 <div id="password-overlay-gw" class="modal-overlay">
-                    <div class="modal-card">
-                        <i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                        <h3>Akses Guru Wali</h3>
-                        <input type="password" id="pw-gw" class="form-input password-input" placeholder="****">
-                        <div class="modal-actions">
-                            <button class="btn btn-secondary" onclick="closeModal('password-overlay-gw')">Batal</button>
-                            <button class="btn btn-primary" onclick="checkPw('pw-gw', 'password-overlay-gw')">Buka</button>
-                        </div>
-                    </div>
+                    <div class="modal-card"><i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i><h3>Akses Guru Wali</h3><input type="password" id="pw-gw" class="form-input password-input" placeholder="****"><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('password-overlay-gw')">Batal</button><button class="btn btn-primary" onclick="checkPw('pw-gw', 'password-overlay-gw')">Buka</button></div></div>
                 </div>
                 <div id="gw-daftar" class="tab-pane">
-                    <div class="card">
-                        <h3><i class="ph ph-user-plus"></i> Input Data Siswa Bimbingan</h3>
-                        <form id="form-gw-tambah">
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:18px;">
-                                <input type="text" id="gw-nama" class="form-input" placeholder="Nama Siswa" required>
-                                <select id="gw-kelas" class="form-select" required><option value="">Kelas</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select>
-                            </div>
-                            <button type="button" class="btn btn-primary" onclick="askPasswordForGW()"><i class="ph ph-plus"></i> Tambah ke Daftar</button>
-                        </form>
-                    </div>
-                    <div class="card">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                            <h3 style="margin:0;"><i class="ph ph-list-dashes"></i> Daftar Siswa Bimbingan</h3>
-                            <button class="btn btn-secondary" style="padding:8px 12px; font-size:0.8rem;" onclick="loadBimbinganStudents()"><i class="ph ph-arrows-clockwise"></i></button>
-                        </div>
-                        <div id="gw-list-siswa" style="color: var(--text-muted);">Memuat data...</div>
-                    </div>
+                    <div class="card"><h3><i class="ph ph-user-plus"></i> Input Data Siswa Bimbingan</h3><form id="form-gw-tambah"><div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:18px;"><input type="text" id="gw-nama" class="form-input" placeholder="Nama Siswa" required><select id="gw-kelas" class="form-select" required><option value="">Kelas</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option></select></div><button type="button" class="btn btn-primary" onclick="askPasswordForGW()"><i class="ph ph-plus"></i> Tambah ke Daftar</button></form></div>
+                    <div class="card"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;"><h3 style="margin:0;"><i class="ph ph-list-dashes"></i> Daftar Siswa Bimbingan</h3><button class="btn btn-secondary" style="padding:8px 12px; font-size:0.8rem;" onclick="loadBimbinganStudents()"><i class="ph ph-arrows-clockwise"></i></button></div><div id="gw-list-siswa" style="color: var(--text-muted);">Memuat data...</div></div>
                 </div>
                 <div id="gw-mulai" class="tab-pane hidden">
                     <div class="card">
                         <h3><i class="ph ph-chat-text"></i> Formulir Bimbingan</h3>
                         <form id="form-gw-bimbingan">
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-                                <div class="form-group"><label class="form-label">Tanggal</label><input type="date" id="gw-tanggal" class="form-input" required></div>
-                                <div class="form-group"><label class="form-label">Jam</label><input type="time" id="gw-jam" class="form-input" required></div>
-                            </div>
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;"><div class="form-group"><label class="form-label">Tanggal</label><input type="date" id="gw-tanggal" class="form-input" required></div><div class="form-group"><label class="form-label">Jam</label><input type="time" id="gw-jam" class="form-input" required></div></div>
                             <div class="form-group"><label class="form-label">Nama Siswa</label><select id="gw-nama-siswa" class="form-select" required><option value="">-- Pilih Siswa --</option></select></div>
                             <div class="form-group"><label class="form-label">Jenis Bimbingan</label><select id="gw-jenis" class="form-select" required><option value="">-- Pilih --</option><option value="Pendampingan Akademik">Pendampingan Akademik</option><option value="Pengembangan Kompetensi">Pengembangan Kompetensi</option><option value="Pembentukan Karakter">Pembentukan Karakter</option><option value="Masalah Pribadi">Masalah Pribadi</option></select></div>
                             <div class="form-group"><label class="form-label">Catatan</label><textarea id="gw-catatan" class="form-textarea" rows="3" required></textarea></div>
@@ -712,48 +593,43 @@
     </div>
 
     <!-- Password Modal for Jadwal -->
-    <div id="password-overlay-jadwal" class="modal-overlay">
+    <div id="password-overlay-jadwal" class="modal-overlay"><div class="modal-card"><i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i><h3>Akses Form Tambah Jadwal</h3><input type="password" id="pw-jadwal" class="form-input password-input" placeholder="****"><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('password-overlay-jadwal')">Batal</button><button class="btn btn-primary" onclick="checkPw('pw-jadwal', 'password-overlay-jadwal')">Buka</button></div></div></div>
+
+    <!-- GENERIC PASSWORD ACTION MODAL (NEW) -->
+    <div id="password-overlay-action" class="modal-overlay">
         <div class="modal-card">
-            <i class="ph ph-lock-key" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <h3>Akses Form Tambah Jadwal</h3>
-            <input type="password" id="pw-jadwal" class="form-input password-input" placeholder="****">
+            <i class="ph ph-shield-check" style="font-size: 3rem; color: var(--warning); margin-bottom: 15px;"></i>
+            <h3>Verifikasi Aksi</h3>
+            <p style="color: var(--text-muted); margin-bottom: 15px;">Aksi ini memerlukan password.</p>
+            <input type="password" id="pw-action" class="form-input password-input" placeholder="****">
             <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="closeModal('password-overlay-jadwal')">Batal</button>
-                <button class="btn btn-primary" onclick="checkPw('pw-jadwal', 'password-overlay-jadwal')">Buka</button>
+                <button class="btn btn-secondary" onclick="closeModal('password-overlay-action')">Batal</button>
+                <button class="btn btn-primary" onclick="checkPwAction()">Lanjutkan</button>
             </div>
         </div>
     </div>
 
     <!-- Confirm Modal -->
-    <div id="confirm-modal" class="modal-overlay">
-        <div class="modal-card">
-            <i class="ph ph-warning-circle" style="font-size: 3rem; color: var(--warning); margin-bottom: 15px;"></i>
-            <h3>Konfirmasi</h3>
-            <p id="confirm-message" style="color: var(--text-muted); margin-bottom: 25px;">Yakin?</p>
-            <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="closeConfirmModal(false)">Batal</button>
-                <button class="btn btn-danger" id="confirm-btn-yes">Ya</button>
-            </div>
-        </div>
-    </div>
+    <div id="confirm-modal" class="modal-overlay"><div class="modal-card"><i class="ph ph-warning-circle" style="font-size: 3rem; color: var(--warning); margin-bottom: 15px;"></i><h3>Konfirmasi</h3><p id="confirm-message" style="color: var(--text-muted); margin-bottom: 25px;">Yakin?</p><div class="modal-actions"><button class="btn btn-secondary" onclick="closeConfirmModal(false)">Batal</button><button class="btn btn-danger" id="confirm-btn-yes">Ya</button></div></div></div>
 
     <div id="toast-container"></div>
 
     <script>
         // URL WEB APP
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbykOk3pMFZOOU1oWaJp08Q2CLJ5x_djN72H1B4hmsQuE6-Qf8-XPSUZjjPDRCnXlQtm2A/exec'; 
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwurDtGFatlP_41SIZe-OJTtn4ivHN9PFsX_WnbjluyyFU-FIHdZ8wfh7Bb49IWFLGosA/exec'; 
         const PASSWORD = "OmGuru25"; 
         const ADMIN_PASSWORD = "AdminGuru25"; 
 
         let studentsCache = {}; 
         let bimbinganStudents = [];
         let silabusData = []; 
-        let bahanAjarList = JSON.parse(localStorage.getItem('bahanAjarList')) || [];
+        let bahanAjarData = []; // Changed from bahanAjarList (localStorage) to bahanAjarData (server)
         let pendingJurnalTab = null;
         let pendingGWTab = null;
         let pendingNilaiTab = null; 
         let pendingNilaiAdminTab = null;
         let confirmCallback = null;
+        let pendingAction = null; // Stores the function to execute after password
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -765,7 +641,9 @@
             ['j-tanggal', 'n-tanggal', 'gw-tanggal'].forEach(id => { if(document.getElementById(id)) document.getElementById(id).value = isoDate; });
             if(document.getElementById('gw-jam')) { document.getElementById('gw-jam').value = `${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`; }
 
-            renderBahanAjarList();
+            // Load data from server immediately
+            loadBahanAjarData();
+            
             const tahunSelects = [document.getElementById('jadwal-tahun'), document.getElementById('tahun-filter'), document.getElementById('silabus-tahun'), document.getElementById('filter-silabus-tahun')]; 
             tahunSelects.forEach(select => { if(select) { for (let y = 2025; y <= 2045; y++) { select.innerHTML += `<option value="${y}/${y+1}">${y}/${y+1}</option>`; } } });
 
@@ -780,12 +658,36 @@
 
         function showConfirm(message, callback) { document.getElementById('confirm-message').innerText = message; document.getElementById('confirm-modal').classList.add('active'); confirmCallback = callback; }
         function closeConfirmModal(result) { document.getElementById('confirm-modal').classList.remove('active'); if (result && confirmCallback) confirmCallback(); confirmCallback = null; }
+        
+        // --- PASSWORD PROTECTION LOGIC ---
+        function askPasswordForAction(callback) {
+            pendingAction = callback;
+            document.getElementById('pw-action').value = '';
+            document.getElementById('password-overlay-action').classList.add('active');
+            setTimeout(() => document.getElementById('pw-action').focus(), 100);
+        }
+
+        function checkPwAction() {
+            const val = document.getElementById('pw-action').value;
+            if (val === PASSWORD || val === ADMIN_PASSWORD) {
+                closeModal('password-overlay-action');
+                if (pendingAction) {
+                    pendingAction();
+                    pendingAction = null;
+                }
+            } else {
+                showToast("Password Salah!", "error");
+                document.querySelector('#password-overlay-action .modal-card').style.animation = "shake 0.4s";
+                setTimeout(() => document.querySelector('#password-overlay-action .modal-card').style.animation = "", 400);
+            }
+        }
+
         function generateCheckboxes(containerId, name) { const container = document.getElementById(containerId); if(!container) return; container.innerHTML = ''; for(let i=1; i<=10; i++) { container.innerHTML += `<label class="jam-checkbox-label"><input type="checkbox" name="${name}" value="${i}"><span>Ke-${i}</span></label>`; } }
         function generateWaktuCheckboxes(containerId, name) { const container = document.getElementById(containerId); if(!container) return; const waktuOptions = ["07.15 - 07.55", "07.55 - 08.35", "08.35 - 09.15", "09.15 - 09.55", "09.55 - 10.20", "10.20 - 11.00", "11.00 - 11.40", "12.50 - 13.30", "13.30 - 14.10", "14.10 - 14.50"]; container.innerHTML = ''; waktuOptions.forEach(w => container.innerHTML += `<label class="jam-checkbox-label"><input type="checkbox" name="${name}" value="${w}"><span>${w}</span></label>`); }
         function showToast(message, type = 'success') { const container = document.getElementById('toast-container'); const toast = document.createElement('div'); toast.className = `toast ${type}`; let icon = type === 'success' ? 'check-circle' : (type === 'info' ? 'info' : 'warning-circle'); toast.innerHTML = `<div style="display:flex; align-items:center; gap:12px;"><i class="ph ph-${icon}" style="font-size:1.2rem;"></i><span>${message}</span></div>`; container.appendChild(toast); setTimeout(() => { toast.style.animation = 'slideInRight 0.3s ease reverse forwards'; setTimeout(() => toast.remove(), 300); }, 3000); }
         
         // Navigation and Tab Logic
-        function showSection(id, btn) { document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('nav .nav-btn').forEach(el => el.classList.remove('active')); if(btn) btn.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); if(id === 'jurnal') { const rekapAbsenBtn = document.querySelector('#jurnal .tab-nav button[onclick*="absen-rekap"]'); if(rekapAbsenBtn) switchTab(rekapAbsenBtn, 'absen-rekap'); closeModal('password-overlay-jurnal'); } if(id === 'buku-nilai') { switchTab(document.querySelector('#buku-nilai .tab-nav button.active'), 'nilai-rekap'); closeModal('password-overlay-nilai'); } if(id === 'guru-wali') { switchTab(document.querySelector('#guru-wali .tab-nav button'), 'gw-daftar'); closeModal('password-overlay-gw'); loadBimbinganStudents(); } if(id === 'jadwal') loadScheduleData(); if(id === 'bahan-ajar') renderBahanAjarList(); if(id === 'silabus') loadSilabusData(); }
+        function showSection(id, btn) { document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('nav .nav-btn').forEach(el => el.classList.remove('active')); if(btn) btn.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); if(id === 'jurnal') { const rekapAbsenBtn = document.querySelector('#jurnal .tab-nav button[onclick*="absen-rekap"]'); if(rekapAbsenBtn) switchTab(rekapAbsenBtn, 'absen-rekap'); closeModal('password-overlay-jurnal'); } if(id === 'buku-nilai') { switchTab(document.querySelector('#buku-nilai .tab-nav button.active'), 'nilai-rekap'); closeModal('password-overlay-nilai'); } if(id === 'guru-wali') { switchTab(document.querySelector('#guru-wali .tab-nav button'), 'gw-daftar'); closeModal('password-overlay-gw'); loadBimbinganStudents(); } if(id === 'jadwal') loadScheduleData(); if(id === 'bahan-ajar') loadBahanAjarData(); if(id === 'silabus') loadSilabusData(); }
         
         function switchTab(btn, tabId) { 
             const parent = btn ? btn.parentElement : document.querySelector('.tab-nav'); 
@@ -846,7 +748,6 @@
             } catch (e) { console.error(e); showToast("Error printing.", "error"); }
         }
 
-        // UPDATED checkNIS
         function checkNIS() { 
             const nisInput = document.getElementById('input-nis-siswa').value; 
             if(!nisInput) { showToast("Masukkan NIS", "error"); return; } 
@@ -855,32 +756,17 @@
             
             fetch(url).then(res => res.json()).then(response => { 
                 const allData = response.data || [];
-                // Check if data exists
-                if (allData.length < 2) { 
-                    showToast("Data nilai kosong.", "error"); 
-                    return; 
-                }
-
-                const headers = allData[0]; 
-                const rows = allData.slice(1); 
-                
-                // Find NIS column index dynamically
+                if (allData.length < 2) { showToast("Data nilai kosong.", "error"); return; }
+                const headers = allData[0]; const rows = allData.slice(1); 
                 let nisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NIS");
-                if(nisIdx === -1) nisIdx = 0; // Default fallback
-                
+                if(nisIdx === -1) nisIdx = 0; 
                 const studentRows = rows.filter(row => String(row[nisIdx]).trim() === String(nisInput).trim()); 
-                
                 if(studentRows.length > 0) { 
                     document.getElementById('nilai-login-card').classList.add('hidden'); 
                     document.getElementById('nilai-rekap-body').classList.remove('hidden'); 
-                    
-                    // Pass headers back along with filtered rows
-                    // Define specific columns to show in order: NIS, Kelas, Jenis, Materi, Nama Siswa, Nilai
                     const colsToShow = ['NIS', 'Kelas', 'Jenis', 'Materi', 'Nama Siswa', 'Nilai']; 
                     renderTableFromData([headers, ...studentRows], 'nilai-rekap-body', true, [], colsToShow); 
-                } else { 
-                    showToast("Data tidak ditemukan", "error"); 
-                } 
+                } else { showToast("Data tidak ditemukan", "error"); } 
             }).catch(err => showToast("Error", "error")); 
         }
 
@@ -895,177 +781,224 @@
             btn.disabled = true; 
             btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; 
             const jamValues = Array.from(document.querySelectorAll('input[name="jam"]:checked')).map(cb => cb.value).join(', '); 
-            
-            const jurnalData = { 
-                tanggal: document.getElementById('j-tanggal').value, 
-                kelas: document.getElementById('j-kelas').value, 
-                jamKe: jamValues, 
-                materiPokok: document.getElementById('j-materi').value, 
-                kegiatanPembelajaran: document.getElementById('j-kegiatan').value,
-                catatan: document.getElementById('j-catatan').value 
-            }; 
-            
+            const jurnalData = { tanggal: document.getElementById('j-tanggal').value, kelas: document.getElementById('j-kelas').value, jamKe: jamValues, materiPokok: document.getElementById('j-materi').value, kegiatanPembelajaran: document.getElementById('j-kegiatan').value, catatan: document.getElementById('j-catatan').value }; 
             const absensiData = []; 
-            document.querySelectorAll('#list-absen .status-group').forEach(grp => { 
-                absensiData.push({ 
-                    tanggal: jurnalData.tanggal, 
-                    kelas: jurnalData.kelas, 
-                    jamKe: jurnalData.jamKe, 
-                    namaSiswa: grp.dataset.name, 
-                    status: grp.dataset.status || 'Hadir' 
-                }); 
-            }); 
-            
-            fetch(WEB_APP_URL, { 
-                method: 'POST', 
-                mode: 'no-cors', 
-                headers: { 'Content-Type': 'application/json' }, 
-                body: JSON.stringify({ action: 'submitJurnal', jurnal: jurnalData, absensi: absensiData }) 
-            }).then(() => { 
-                showToast("Terkirim!"); 
-                btn.disabled = false; 
-                btn.innerHTML = '<i class="ph ph-paper-plane-right"></i> Kirim'; 
-                document.getElementById('form-jurnal').reset(); 
-                document.getElementById('list-absen').innerHTML = ''; 
-            }).catch(err => { 
-                showToast("Gagal", "error"); 
-                btn.disabled = false; 
-                btn.innerHTML = '<i class="ph ph-paper-plane-right"></i> Kirim'; 
-            }); 
+            document.querySelectorAll('#list-absen .status-group').forEach(grp => { absensiData.push({ tanggal: jurnalData.tanggal, kelas: jurnalData.kelas, jamKe: jurnalData.jamKe, namaSiswa: grp.dataset.name, status: grp.dataset.status || 'Hadir' }); }); 
+            fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'submitJurnal', jurnal: jurnalData, absensi: absensiData }) }).then(() => { showToast("Terkirim!"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-paper-plane-right"></i> Kirim'; document.getElementById('form-jurnal').reset(); document.getElementById('list-absen').innerHTML = ''; }).catch(err => { showToast("Gagal", "error"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-paper-plane-right"></i> Kirim'; }); 
         });
 
         document.getElementById('form-nilai').addEventListener('submit', (e) => { e.preventDefault(); const btn = document.getElementById('btn-submit-nilai'); btn.disabled = true; btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; const meta = { tanggal: document.getElementById('n-tanggal').value, kelas: document.getElementById('n-kelas').value, jenis: document.getElementById('n-jenis').value, materi: document.getElementById('n-materi').value }; const nilaiData = []; document.querySelectorAll('.score-input').forEach(input => { if(input.value !== '') nilaiData.push({ namaSiswa: input.dataset.name, nilai: parseFloat(input.value) }); }); fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'submitNilai', ...meta, data: nilaiData }) }).then(() => { showToast("Tersimpan!"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-floppy-disk"></i> Simpan'; document.querySelectorAll('.score-input').forEach(i => i.value = ''); }).catch(err => { showToast("Gagal", "error"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-floppy-disk"></i> Simpan'; }); });
-        function loadSilabusData() { const container = document.getElementById('silabus-list-container'); container.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Data_Silabus&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { const data = response.data || []; if (data.length > 0) { silabusData = data.slice(1); renderSilabusList(); } else { container.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Belum ada data silabus.</p>'; } }).catch(err => { container.innerHTML = '<p style="text-align:center; color:var(--danger);">Gagal memuat data.</p>'; }); }
-        function renderSilabusList() { const container = document.getElementById('silabus-list-container'); const filterTahun = document.getElementById('filter-silabus-tahun').value; const filterSem = document.getElementById('filter-silabus-semester').value; let filtered = silabusData; if (filterTahun) { filtered = filtered.filter(row => row[1] === filterTahun); } if (filterSem) { filtered = filtered.filter(row => row[2] === filterSem); } if (filtered.length === 0) { container.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Tidak ada data.</p>'; return; } let html = '<div class="bahan-grid">'; filtered.forEach((row) => { const tahun = row[1] || '-'; const sem = row[2] || '-'; const judul = row[3] || '-'; const link = row[4] || '#'; const ket = row[5] || ''; html += `<div class="bahan-card"><h4>${judul}</h4><p style="font-size:0.8rem; color:var(--accent); margin-bottom:8px;">${tahun} - ${sem}</p><p>${ket}</p><a href="${link}" target="_blank" class="btn btn-secondary" style="font-size:0.85rem; margin-top:auto;"><i class="ph ph-link"></i> Buka</a></div>`; }); html += '</div>'; container.innerHTML = html; }
+        
+        // --- SILABUS LOGIC (UPDATED) ---
+        function loadSilabusData() { 
+            const container = document.getElementById('silabus-list-container'); 
+            container.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; 
+            const url = WEB_APP_URL + '?action=getData&sheetName=Data_Silabus&nocache=' + new Date().getTime(); 
+            fetch(url).then(res => res.json()).then(response => { 
+                const data = response.data || []; 
+                if (data.length > 0) { 
+                    silabusData = data.slice(1); 
+                    renderSilabusList(); 
+                } else { 
+                    container.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Belum ada data silabus.</p>'; 
+                } 
+            }).catch(err => { 
+                container.innerHTML = '<p style="text-align:center; color:var(--danger);">Gagal memuat data.</p>'; 
+            }); 
+        }
+
+        function renderSilabusList() { 
+            const container = document.getElementById('silabus-list-container'); 
+            const filterTahun = document.getElementById('filter-silabus-tahun').value; 
+            const filterSem = document.getElementById('filter-silabus-semester').value; 
+            
+            let filtered = silabusData; 
+            if (filterTahun) { filtered = filtered.filter(row => row[1] === filterTahun); } 
+            if (filterSem) { filtered = filtered.filter(row => row[2] === filterSem); } 
+            
+            if (filtered.length === 0) { 
+                container.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Tidak ada data.</p>'; 
+                return; 
+            } 
+            
+            let html = '<div class="bahan-grid">'; 
+            filtered.forEach((row) => { 
+                const timestamp = row[0]; 
+                const tahun = row[1] || '-'; 
+                const sem = row[2] || '-'; 
+                const judul = row[3] || '-'; 
+                const link = row[4] || '#'; 
+                const ket = row[5] || ''; 
+                
+                html += `<div class="bahan-card">
+                            <button class="delete-btn" onclick="askDeleteSilabus('${timestamp}', '${judul.replace(/'/g, "\\'")}')"><i class="ph ph-trash"></i></button>
+                            <h4>${judul}</h4>
+                            <p style="font-size:0.8rem; color:var(--accent); margin-bottom:8px;">${tahun} - ${sem}</p>
+                            <p>${ket}</p>
+                            <a href="${link}" target="_blank" class="btn btn-secondary" style="font-size:0.85rem; margin-top:auto;"><i class="ph ph-link"></i> Buka</a>
+                         </div>`; 
+            }); 
+            html += '</div>'; 
+            container.innerHTML = html; 
+        }
+
+        // Password Protected Delete for Silabus
+        function askDeleteSilabus(timestamp, judul) {
+            showConfirm(`Hapus silabus "${judul}"?`, () => {
+                askPasswordForAction(() => executeDeleteSilabus(timestamp));
+            });
+        }
+
+        function executeDeleteSilabus(timestamp) {
+            showToast("Menghapus...", "info");
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'deleteSilabus', timestamp: timestamp })
+            }).then(() => {
+                showToast("Silabus Terhapus!", "success");
+                loadSilabusData();
+            }).catch(err => {
+                console.error(err);
+                showToast("Gagal menghapus.", "error");
+            });
+        }
+
         document.getElementById('form-silabus').addEventListener('submit', (e) => { e.preventDefault(); const btn = e.target.querySelector('button[type="submit"]'); btn.disabled = true; btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; const data = { tahun: document.getElementById('silabus-tahun').value, semester: document.getElementById('silabus-semester').value, judul: document.getElementById('silabus-judul').value, link: document.getElementById('silabus-link').value, keterangan: document.getElementById('silabus-keterangan').value }; fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'submitSilabus', ...data }) }).then(() => { showToast("Silabus Tersimpan!"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-floppy-disk"></i> Simpan Silabus'; document.getElementById('form-silabus').reset(); closeSilabusForm(); loadSilabusData(); }).catch(err => { showToast("Gagal", "error"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-floppy-disk"></i> Simpan Silabus'; }); });
+        
         function submitGWTambah() { const name = document.getElementById('gw-nama').value; const kelas = document.getElementById('gw-kelas').value; if(!name || !kelas) return; fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'submitBimbinganMaster', nama: name, kelas: kelas, tanggal: new Date().toISOString().split('T')[0] }) }).then(() => { showToast(`${name} ditambahkan.`); document.getElementById('form-gw-tambah').reset(); loadBimbinganStudents(); }).catch(err => showToast("Gagal", "error")); }
         function loadBimbinganStudents() { const div = document.getElementById('gw-list-siswa'); const select = document.getElementById('gw-nama-siswa'); div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; select.innerHTML = '<option value="">-- Memuat --</option>'; const url = WEB_APP_URL + '?action=getData&sheetName=Master_Bimbingan&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { const data = response.data || []; bimbinganStudents = []; if(data.length > 0) { const startRow = (String(data[0][0]).toUpperCase() === 'TIMESTAMP') ? 1 : 0; const seen = new Set(); for(let i=startRow; i<data.length; i++) { const row = data[i]; const nama = row[1]; const kls = row[2]; if(nama && kls) { const key = nama + "-" + kls; if(!seen.has(key)) { bimbinganStudents.push({ name: nama, kelas: kls }); seen.add(key); } } } } div.innerHTML = ''; if(bimbinganStudents.length === 0) { div.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Belum ada siswa.</p>'; } else { bimbinganStudents.forEach((s) => { div.innerHTML += `<div class="student-item"><div><strong>${s.name}</strong> <span style="font-size:0.8em; color:var(--text-muted);">(${s.kelas})</span></div></div>`; }); } select.innerHTML = '<option value="">-- Pilih --</option>'; bimbinganStudents.forEach(s => { const opt = document.createElement('option'); opt.value = JSON.stringify(s); opt.textContent = `${s.name} (${s.kelas})`; select.appendChild(opt); }); }).catch(err => { div.innerHTML = '<p style="text-align:center; color:var(--danger);">Gagal.</p>'; }); }
         document.getElementById('form-gw-bimbingan').addEventListener('submit', (e) => { e.preventDefault(); const studentRaw = document.getElementById('gw-nama-siswa').value; if(!studentRaw) { showToast("Pilih siswa!", "error"); return; } const studentObj = JSON.parse(studentRaw); const btn = e.target.querySelector('button[type="submit"]'); btn.disabled = true; btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'submitBimbingan', tanggal: document.getElementById('gw-tanggal').value, jam: document.getElementById('gw-jam').value, namaSiswa: studentObj.name, kelas: studentObj.kelas, jenis: document.getElementById('gw-jenis').value, catatan: document.getElementById('gw-catatan').value, status: document.getElementById('gw-status').value }) }).then(() => { showToast('Tersimpan!'); document.getElementById('form-gw-bimbingan').reset(); const now = new Date(); document.getElementById('gw-tanggal').valueAsDate = now; document.getElementById('gw-jam').value = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`; btn.disabled = false; btn.innerHTML = '<i class="ph ph-check-circle"></i> Simpan'; }).catch(err => { showToast("Gagal", "error"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-check-circle"></i> Simpan'; }); });
         
-        document.getElementById('form-bahan').addEventListener('submit', (e) => { 
-            e.preventDefault(); 
-            const btn = document.getElementById('btn-submit-bahan'); 
-            btn.disabled = true; 
-            btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; 
-            
+        // --- BAHAN AJAR LOGIC (UPDATED - SERVER SYNC) ---
+        function loadBahanAjarData() {
+            const container = document.getElementById('list-bahan-container');
+            container.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>';
+            const url = WEB_APP_URL + '?action=getData&sheetName=Data_Bahan&nocache=' + new Date().getTime();
+            fetch(url).then(res => res.json()).then(response => {
+                const data = response.data || [];
+                if (data.length > 0) {
+                    bahanAjarData = data.slice(1);
+                    renderBahanAjarList();
+                } else {
+                    container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center;">Belum ada materi.</p>';
+                }
+            }).catch(err => {
+                // Fallback to localStorage if server fails, but try to clear it to encourage server sync
+                console.error("Server load failed, checking local cache");
+                // For simplicity in this update, we trust the server.
+                container.innerHTML = '<p style="text-align:center; color:var(--danger);">Gagal memuat data.</p>';
+            });
+        }
+
+        function renderBahanAjarList() {
+            const container = document.getElementById('list-bahan-container');
+            if (bahanAjarData.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center;">Belum ada materi.</p>';
+                return;
+            }
+            container.innerHTML = '';
+            bahanAjarData.forEach((row) => {
+                // Sheet Structure: [Timestamp, Judul, Link, Deskripsi]
+                const timestamp = row[0];
+                const judul = row[1] || '-';
+                const link = row[2] || '#';
+                const desc = row[3] || '';
+
+                container.innerHTML += `<div class="bahan-card">
+                    <button class="delete-btn" onclick="askDeleteBahan('${timestamp}', '${judul.replace(/'/g, "\\'")}')"><i class="ph ph-trash"></i></button>
+                    <h4>${judul}</h4>
+                    <p>${desc}</p>
+                    <a href="${link}" target="_blank" class="btn btn-secondary" style="font-size:0.85rem;"><i class="ph ph-link"></i> Buka</a>
+                </div>`;
+            });
+        }
+
+        document.getElementById('form-bahan').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-submit-bahan');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>';
+
             const dataToSend = {
                 judul: document.getElementById('ba-judul').value,
                 link: document.getElementById('ba-link').value,
                 desc: document.getElementById('ba-desc').value
             };
 
-            bahanAjarList.push({ id: Date.now(), ...dataToSend, tanggal: new Date().toLocaleDateString('id-ID') }); 
-            localStorage.setItem('bahanAjarList', JSON.stringify(bahanAjarList)); 
-            
-            fetch(WEB_APP_URL, { 
-                method: 'POST', 
-                mode: 'no-cors', 
-                headers: { 'Content-Type': 'application/json' }, 
-                body: JSON.stringify({ action: 'submitBahan', ...dataToSend }) 
-            }).then(() => { 
-                showToast("Tersimpan ke Spreadsheet!"); 
-                btn.disabled = false; 
-                btn.innerHTML = '<i class="ph ph-upload"></i> Simpan'; 
-                document.getElementById('form-bahan').reset(); 
-                renderBahanAjarList(); 
-            }).catch(err => { 
-                showToast("Gagal simpan ke server", "error"); 
-                btn.disabled = false; 
-                btn.innerHTML = '<i class="ph ph-upload"></i> Simpan'; 
-            }); 
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'submitBahan', ...dataToSend })
+            }).then(() => {
+                showToast("Tersimpan ke Spreadsheet!");
+                btn.disabled = false;
+                btn.innerHTML = '<i class="ph ph-upload"></i> Simpan';
+                document.getElementById('form-bahan').reset();
+                loadBahanAjarData(); // Reload from server to get correct ID
+            }).catch(err => {
+                showToast("Gagal simpan ke server", "error");
+                btn.disabled = false;
+                btn.innerHTML = '<i class="ph ph-upload"></i> Simpan';
+            });
         });
 
-        function renderBahanAjarList() { const container = document.getElementById('list-bahan-container'); if (bahanAjarList.length === 0) { container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center;">Belum ada materi.</p>'; return; } container.innerHTML = ''; bahanAjarList.forEach((item, index) => { container.innerHTML += `<div class="bahan-card"><button class="delete-btn" onclick="confirmDeleteBahan(${index})"><i class="ph ph-trash"></i></button><h4>${item.judul}</h4><p>${item.desc}</p><a href="${item.link}" target="_blank" class="btn btn-secondary" style="font-size:0.85rem;"><i class="ph ph-link"></i> Buka</a></div>`; }); }
-        function confirmDeleteBahan(index) { showConfirm("Hapus materi?", () => { bahanAjarList.splice(index, 1); localStorage.setItem('bahanAjarList', JSON.stringify(bahanAjarList)); renderBahanAjarList(); showToast("Dihapus", "info"); }); }
+        // Password Protected Delete for Bahan Ajar
+        function askDeleteBahan(timestamp, judul) {
+            showConfirm(`Hapus materi "${judul}"?`, () => {
+                askPasswordForAction(() => executeDeleteBahan(timestamp));
+            });
+        }
+
+        function executeDeleteBahan(timestamp) {
+            showToast("Menghapus...", "info");
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'deleteBahan', timestamp: timestamp })
+            }).then(() => {
+                showToast("Materi Terhapus!", "success");
+                loadBahanAjarData();
+            }).catch(err => {
+                console.error(err);
+                showToast("Gagal menghapus.", "error");
+            });
+        }
+
         document.getElementById('form-jadwal').addEventListener('submit', (e) => { e.preventDefault(); const btn = document.querySelector('#jadwal-input-wrapper button[type="submit"]'); btn.disabled = true; btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; const jamValues = Array.from(document.querySelectorAll('input[name="jadwal-jam"]:checked')).map(cb => cb.value).join(', '); const waktuValues = Array.from(document.querySelectorAll('input[name="jadwal-waktu"]:checked')).map(cb => cb.value).join(', '); const jadwalData = { tahun: document.getElementById('jadwal-tahun').value, semester: document.getElementById('jadwal-semester').value, hari: document.getElementById('jadwal-hari').value, jamKe: jamValues, waktu: waktuValues, kelas: document.getElementById('jadwal-kelas').value, mapel: document.getElementById('jadwal-mapel').value }; fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'addJadwal', data: jadwalData }) }).then(() => { showToast("Tersimpan!"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-floppy-disk"></i> Simpan'; document.getElementById('form-jadwal').reset(); loadScheduleData(); }).catch(err => { showToast("Gagal", "error"); btn.disabled = false; btn.innerHTML = '<i class="ph ph-floppy-disk"></i> Simpan'; }); });
         function loadScheduleData() { const div = document.getElementById('jadwal-content'); const filterTahun = document.getElementById('tahun-filter').value; const filterSem = document.getElementById('semester-filter').value; div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Jadwal&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { let dataRows = (response.data && response.data[0] && response.data[0][0] === 'Timestamp') ? response.data.slice(1) : response.data || []; const filteredRows = dataRows.filter(row => row[1] === filterTahun && row[2] === filterSem); let html = `<div class="table-container"><table><thead><tr><th>Hari</th><th>Jam</th><th>Waktu</th><th>Kelas</th><th>Mapel</th></tr></thead><tbody>`; filteredRows.forEach(r => { html += `<tr><td>${r[3]||'-'}</td><td>${r[4]||'-'}</td><td>${r[5]||'-'}</td><td>${r[6]||'-'}</td><td>${r[7]||'-'}</td></tr>`; }); html += `</tbody></table></div>`; div.innerHTML = html; }).catch(err => { div.innerHTML = '<p style="text-align:center">Gagal.</p>'; }); }
         
-        // Rekap Logic
-        function loadRekap(type, targetId) { const div = document.getElementById(targetId); div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Data_' + type + '&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { if(response.data && response.data.length > 0) { 
-            let colsToHide = [];
-            if (type === 'Bimbingan') colsToHide = ['Jam'];
-            renderTableFromData(response.data, targetId, false, colsToHide); 
-        } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Kosong.</p>'; } }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); }
+        function loadRekap(type, targetId) { const div = document.getElementById(targetId); div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; const url = WEB_APP_URL + '?action=getData&sheetName=Data_' + type + '&nocache=' + new Date().getTime(); fetch(url).then(res => res.json()).then(response => { if(response.data && response.data.length > 0) { let colsToHide = []; if (type === 'Bimbingan') colsToHide = ['Jam']; renderTableFromData(response.data, targetId, false, colsToHide); } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Kosong.</p>'; } }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); }
 
         function loadRekapFiltered(type, targetId) { 
             const div = document.getElementById(targetId); 
             div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; 
-            
-            let kelasVal = "";
-            let bulanVal = "";
-            let jenisVal = "";
-            let namaVal = "";
-            let statusVal = "";
-
-            if(type === 'Jurnal') {
-                kelasVal = document.getElementById('filter-jurnal-kelas').value;
-                bulanVal = document.getElementById('filter-jurnal-bulan').value;
-            } else if(type === 'Absensi') {
-                kelasVal = document.getElementById('filter-absen-kelas').value;
-                bulanVal = document.getElementById('filter-absen-bulan').value;
-                namaVal = document.getElementById('filter-absen-nama') ? document.getElementById('filter-absen-nama').value.toLowerCase() : "";
-                statusVal = document.getElementById('filter-absen-status') ? document.getElementById('filter-absen-status').value : "";
-            } else if(type === 'Bimbingan') {
-                jenisVal = document.getElementById('filter-gw-jenis').value;
-            }
-
+            let kelasVal = ""; let bulanVal = ""; let jenisVal = ""; let namaVal = ""; let statusVal = "";
+            if(type === 'Jurnal') { kelasVal = document.getElementById('filter-jurnal-kelas').value; bulanVal = document.getElementById('filter-jurnal-bulan').value; } else if(type === 'Absensi') { kelasVal = document.getElementById('filter-absen-kelas').value; bulanVal = document.getElementById('filter-absen-bulan').value; namaVal = document.getElementById('filter-absen-nama') ? document.getElementById('filter-absen-nama').value.toLowerCase() : ""; statusVal = document.getElementById('filter-absen-status') ? document.getElementById('filter-absen-status').value : ""; } else if(type === 'Bimbingan') { jenisVal = document.getElementById('filter-gw-jenis').value; }
             let url = WEB_APP_URL + '?action=getData&sheetName=Data_' + type + '&nocache=' + new Date().getTime();
-            
-            fetch(url)
-            .then(res => res.json())
-            .then(response => {
+            fetch(url).then(res => res.json()).then(response => {
                 if(response.data && response.data.length > 0) {
-                    let data = response.data;
-                    let headers = data[0];
-                    let rows = data.slice(1);
-                    
-                    // Dynamic Header Index Finding
+                    let data = response.data; let headers = data[0]; let rows = data.slice(1);
                     let kelasIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "KELAS");
                     let bulanIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "TANGGAL");
                     let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
                     let namaIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NAMA" || String(h).toUpperCase().trim() === "NAMA SISWA");
                     let statusIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "STATUS");
-
                     let filteredRows = rows.filter(row => {
                         let match = true;
-                        
-                        // Filter Kelas
-                        if (kelasVal && kelasIdx !== -1) {
-                            match = match && (String(row[kelasIdx]).trim() === String(kelasVal).trim());
-                        }
-                        
-                        // Filter Bulan (based on Tanggal column)
+                        if (kelasVal && kelasIdx !== -1) { match = match && (String(row[kelasIdx]).trim() === String(kelasVal).trim()); }
                         if (bulanVal && bulanIdx !== -1) {
-                            try {
-                                let date = new Date(row[bulanIdx]);
-                                if (!isNaN(date)) {
-                                    let rowMonth = date.getMonth() + 1;
-                                    match = match && (rowMonth == parseInt(bulanVal));
-                                }
-                            } catch(e) { match = false; }
+                            try { let date = new Date(row[bulanIdx]); if (!isNaN(date)) { let rowMonth = date.getMonth() + 1; match = match && (rowMonth == parseInt(bulanVal)); } } catch(e) { match = false; }
                         }
-
-                        // Filter Jenis
-                        if (jenisVal && jenisIdx !== -1) {
-                             match = match && (String(row[jenisIdx]).trim() === String(jenisVal).trim());
-                        }
-
-                        // Filter Nama
-                        if (namaVal && namaIdx !== -1) {
-                            match = match && (String(row[namaIdx]).toLowerCase().includes(namaVal));
-                        }
-
-                        // Filter Status
-                        if (statusVal && statusIdx !== -1) {
-                            match = match && (String(row[statusIdx]).trim() === statusVal);
-                        }
-
+                        if (jenisVal && jenisIdx !== -1) { match = match && (String(row[jenisIdx]).trim() === String(jenisVal).trim()); }
+                        if (namaVal && namaIdx !== -1) { match = match && (String(row[namaIdx]).toLowerCase().includes(namaVal)); }
+                        if (statusVal && statusIdx !== -1) { match = match && (String(row[statusIdx]).trim() === statusVal); }
                         return match;
                     });
-                    
-                    // Hide 'Jam' column for Bimbingan
-                    let colsToHide = [];
-                    if (type === 'Bimbingan') colsToHide = ['Jam'];
+                    let colsToHide = []; if (type === 'Bimbingan') colsToHide = ['Jam'];
                     renderTableFromData([headers, ...filteredRows], targetId, false, colsToHide);
                 } else { div.innerHTML = '<p style="text-align:center; color:var(--text-muted)">Kosong.</p>'; }
             }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); 
@@ -1076,42 +1009,20 @@
             const kelas = document.getElementById('filter-nilai-admin-kelas').value; 
             const jenis = document.getElementById('filter-nilai-admin-jenis').value; 
             const nama = document.getElementById('filter-nilai-admin-nama') ? document.getElementById('filter-nilai-admin-nama').value.toLowerCase() : "";
-            
             div.innerHTML = '<p style="text-align:center;"><i class="ph ph-spinner ph-spin"></i></p>'; 
-            
             let url = WEB_APP_URL + '?action=getData&sheetName=Data_Nilai&nocache=' + new Date().getTime(); 
-            
             fetch(url).then(res => res.json()).then(response => { 
                 if(response.data && response.data.length > 0) { 
-                    let data = response.data; 
-                    let headers = data[0]; 
-                    let rows = data.slice(1); 
-                    
-                    // FIX: Dynamic Index Finding
+                    let data = response.data; let headers = data[0]; let rows = data.slice(1); 
                     let kelasIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "KELAS");
                     let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
                     let namaIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NAMA");
-                    // If Nama is "NAMA SISWA", try that too
                     if(namaIdx === -1) namaIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "NAMA SISWA");
-
                     let filteredRows = rows.filter(row => { 
                         let match = true; 
-                        
-                        // Filter Kelas using found index
-                        if(kelas && kelasIdx !== -1) {
-                            match = match && (String(row[kelasIdx]).trim() === String(kelas).trim());
-                        }
-                        
-                        // Filter Jenis using found index
-                        if(jenis && jenisIdx !== -1) {
-                            match = match && (String(row[jenisIdx]).trim() === String(jenis).trim());
-                        }
-                        
-                        // Filter Nama using found index
-                        if(nama && namaIdx !== -1) {
-                            match = match && (String(row[namaIdx]).toLowerCase().includes(nama));
-                        }
-                        
+                        if(kelas && kelasIdx !== -1) { match = match && (String(row[kelasIdx]).trim() === String(kelas).trim()); }
+                        if(jenis && jenisIdx !== -1) { match = match && (String(row[jenisIdx]).trim() === String(jenis).trim()); }
+                        if(nama && namaIdx !== -1) { match = match && (String(row[namaIdx]).toLowerCase().includes(nama)); }
                         return match; 
                     }); 
                     renderTableFromData([headers, ...filteredRows], 'nilai-admin-body'); 
@@ -1119,107 +1030,51 @@
             }).catch(err => { div.innerHTML = '<p style="text-align:center">Error.</p>'; }); 
         }
 
-        // UPDATED Render Table Logic for Alignment & Custom Hide/Show
         function renderTableFromData(values, targetId, isStudentView = false, columnsToHide = [], columnsToShow = null) {
             const div = document.getElementById(targetId);
             if(!values || values.length === 0) { div.innerHTML = '<p>Kosong.</p>'; return; }
-            
-            let headers = values[0];
-            let dataRows = values.slice(1);
-            
-            // Determine indices to use
-            let indicesToUse = [];
-            let cleanHeaders = [];
-
+            let headers = values[0]; let dataRows = values.slice(1);
+            let indicesToUse = []; let cleanHeaders = [];
             if (columnsToShow) {
-                // WHITELIST MODE (Student View)
                 columnsToShow.forEach(colName => {
-                    // Try exact match first, then partial match (e.g. "Nama" matches "NAMA SISWA")
                     let idx = headers.findIndex(h => String(h).toUpperCase().trim() === String(colName).toUpperCase().trim());
-                    if (idx === -1) {
-                         idx = headers.findIndex(h => String(h).toUpperCase().includes(String(colName).toUpperCase()));
-                    }
-                    
-                    if (idx !== -1) {
-                        indicesToUse.push(idx);
-                        cleanHeaders.push(colName); // Use the requested header name
-                    }
+                    if (idx === -1) { idx = headers.findIndex(h => String(h).toUpperCase().includes(String(colName).toUpperCase())); }
+                    if (idx !== -1) { indicesToUse.push(idx); cleanHeaders.push(colName); }
                 });
             } else {
-                // BLACKLIST MODE (Admin View)
                 let timestampIdx = headers.findIndex(h => String(h).toUpperCase().includes('TIMESTAMP'));
-                if(timestampIdx === -1 && dataRows.length > 0 && dataRows[0][0] && typeof dataRows[0][0] === 'string' && dataRows[0][0].match(/^\d{4}-\d{2}-\d{2}T/)) {
-                    timestampIdx = 0;
-                }
-
-                let hideIndices = columnsToHide.map(colName => 
-                    headers.findIndex(h => String(h).toUpperCase().trim() === String(colName).toUpperCase().trim())
-                ).filter(idx => idx !== -1);
-
+                if(timestampIdx === -1 && dataRows.length > 0 && dataRows[0][0] && typeof dataRows[0][0] === 'string' && dataRows[0][0].match(/^\d{4}-\d{2}-\d{2}T/)) { timestampIdx = 0; }
+                let hideIndices = columnsToHide.map(colName => headers.findIndex(h => String(h).toUpperCase().trim() === String(colName).toUpperCase().trim())).filter(idx => idx !== -1);
                 let tanggalIdx = headers.findIndex(h => String(h).toUpperCase().trim() === 'TANGGAL');
-                
                 headers.forEach((h, i) => {
-                    if(i !== timestampIdx && !hideIndices.includes(i)) {
-                        indicesToUse.push(i);
-                        cleanHeaders.push(h);
-                    }
+                    if(i !== timestampIdx && !hideIndices.includes(i)) { indicesToUse.push(i); cleanHeaders.push(h); }
                 });
             }
-
-            // Build HTML
             let tableHtml = `<div class="table-container"><table><thead><tr>`;
             cleanHeaders.forEach(h => { tableHtml += `<th>${h}</th>`; });
             tableHtml += `</tr></thead><tbody>`;
-
             dataRows.forEach(row => {
                 tableHtml += `<tr>`;
                 indicesToUse.forEach(i => {
                     let cell = row[i];
-                    // Date formatting
                     if (String(headers[i]).toUpperCase().trim() === 'TANGGAL' && typeof cell === 'string' && cell.includes('T')) {
-                        try { 
-                            let date = new Date(cell); 
-                            if (!isNaN(date)) cell = date.toLocaleDateString('id-ID'); 
-                        } catch(e) {}
+                        try { let date = new Date(cell); if (!isNaN(date)) cell = date.toLocaleDateString('id-ID'); } catch(e) {}
                     }
                     tableHtml += `<td>${cell}</td>`;
                 });
                 tableHtml += `</tr>`;
             });
             tableHtml += `</tbody></table></div>`;
-            
-            // Final Assembly
             if(isStudentView) {
-                // Extract Student Name for Header
-                let studentName = "Siswa";
-                let nameIdx = headers.findIndex(h => String(h).toUpperCase().includes("NAMA"));
-                if (nameIdx !== -1 && dataRows.length > 0) {
-                    studentName = dataRows[0][nameIdx];
-                }
-
-                // Extract unique "Jenis" for Sub-header
-                let jenisList = [];
-                let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
-                if (jenisIdx !== -1) {
-                    dataRows.forEach(r => {
-                        if (r[jenisIdx] && !jenisList.includes(r[jenisIdx])) jenisList.push(r[jenisIdx]);
-                    });
-                }
+                let studentName = "Siswa"; let nameIdx = headers.findIndex(h => String(h).toUpperCase().includes("NAMA"));
+                if (nameIdx !== -1 && dataRows.length > 0) { studentName = dataRows[0][nameIdx]; }
+                let jenisList = []; let jenisIdx = headers.findIndex(h => String(h).toUpperCase().trim() === "JENIS");
+                if (jenisIdx !== -1) { dataRows.forEach(r => { if (r[jenisIdx] && !jenisList.includes(r[jenisIdx])) jenisList.push(r[jenisIdx]); }); }
                 let jenisText = jenisList.length > 0 ? jenisList.join(', ') : 'Campuran';
-
-                let headerHtml = `
-                <div style="margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
-                    <h3 style="font-family: 'Space Grotesk', sans-serif; color: var(--primary); margin-bottom: 8px; font-size: 1.4rem;">Rekapitulasi Nilai Siswa</h3>
-                    <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 4px;"><strong>${studentName}</strong></p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Jenis Penilaian: <span style="color: var(--accent); font-weight:600;">${jenisText}</span></p>
-                </div>`;
-
+                let headerHtml = `<div style="margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 20px;"><h3 style="font-family: 'Space Grotesk', sans-serif; color: var(--primary); margin-bottom: 8px; font-size: 1.4rem;">Rekapitulasi Nilai Siswa</h3><p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 4px;"><strong>${studentName}</strong></p><p style="font-size: 0.9rem; color: var(--text-muted);">Jenis Penilaian: <span style="color: var(--accent); font-weight:600;">${jenisText}</span></p></div>`;
                 let backBtn = `<div style="margin-top:20px; text-align:center;"><button class="btn btn-secondary" onclick="document.getElementById('nilai-login-card').classList.remove('hidden'); document.getElementById('nilai-rekap-body').classList.add('hidden');">Kembali</button></div>`;
-                
                 div.innerHTML = headerHtml + tableHtml + backBtn;
-            } else {
-                div.innerHTML = tableHtml;
-            }
+            } else { div.innerHTML = tableHtml; }
         }
     </script>
 </body>
